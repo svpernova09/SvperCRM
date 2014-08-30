@@ -1,0 +1,6 @@
+suites:
+  svpercrm_suite:
+    namespace: SvperCRM
+    src_path: app
+    spec_path: app
+    spec_prefix: spec

@@ -1,4 +1,6 @@
-<?php
+<?php namespace SvperCRM;
+
+use Countable;
 
 class Organization implements Countable
 {
