@@ -15,6 +15,18 @@ class Organization extends \Eloquent {
         return $this->hasMany('Person');
     }
 
+    public function supportContracts()
+    {
+
+        return $this->hasMany('Supportcontract');
+    }
+
+    public function marketingRetainers()
+    {
+
+        return $this->hasMany('Marketingretainer');
+    }
+
     public function salesPerson()
     {
 
