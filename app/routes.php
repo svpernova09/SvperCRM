@@ -19,4 +19,5 @@ Route::get('/', function()
 Route::resource('organizations', 'OrganizationsController');
 Route::resource('supportcontracts', 'SupportcontractsController');
 Route::resource('marketingretainers', 'MarketingretainersController');
-Route::resource('people', 'PeoplesController');
+Route::resource('people', 'PeopleController');
+Route::resource('credentials', 'CredentialsController');
