@@ -10,7 +10,7 @@
 	},
     "require-dev": {
         "fzaninotto/faker": "dev-master",
-        "way/generators": "dev-master",
+        "way/generators": "~2.6.0",
         "barryvdh/laravel-ide-helper": "dev-master"
     },
 	"autoload": {
