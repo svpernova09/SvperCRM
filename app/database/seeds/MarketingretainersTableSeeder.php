@@ -12,7 +12,11 @@ class MarketingretainersTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Marketingretainer::create([
-
+                'title' => $faker->company,
+                'hours' => '20',
+                'strategist_id' => '1',
+                'account_manager_id' => '1',
+                'domain' => $faker->domainName
 			]);
 		}
 	}

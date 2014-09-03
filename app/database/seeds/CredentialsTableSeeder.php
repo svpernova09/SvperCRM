@@ -12,7 +12,10 @@ class CredentialsTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Credential::create([
-
+                'service_name' => $faker->name,
+                'user_name' => $faker->userName,
+                'password' => $faker->password,
+                'comments' => $faker->text
 			]);
 		}
 	}

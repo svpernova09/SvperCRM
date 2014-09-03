@@ -1,1 +1,0 @@
-/home/vagrant/svpercrm/app/views/peoples/show.blade.php
