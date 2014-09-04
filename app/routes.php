@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', array('as' => 'home', function()
 {
-	return View::make('hello');
-});
+    return View::make('hello');
+}));
 
 Route::resource('organizations', 'OrganizationsController');
 Route::resource('supportcontracts', 'SupportcontractsController');
