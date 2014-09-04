@@ -10,7 +10,7 @@ class PeopleController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('people.index');
 	}
 
 	/**

@@ -46,13 +46,15 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="{{ URL::route('home') }}">Sentinel</a>
+	          <a class="navbar-brand" href="{{ URL::route('home') }}">SvperCRM</a>
 	        </div>
 	        <div class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav">
 				@if (Sentry::check() && Sentry::getUser()->hasAccess('admin'))
 					<li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\UserController@index') }}">Users</a></li>
 					<li {{ (Request::is('groups*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
+					<li {{ (Request::is('organizations*') ? 'class="active"' : '') }}><a href="{{ URL::action('OrganizationsController@index') }}">Organizations</a></li>
+					<li {{ (Request::is('people*') ? 'class="active"' : '') }}><a href="{{ URL::action('PeopleController@index') }}">People</a></li>
 				@endif
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
