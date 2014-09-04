@@ -2,6 +2,13 @@
 
 class OrganizationsController extends \BaseController {
 
+    protected $org;
+
+    public function __construct(Organization $org)
+    {
+        $this->org = $org;
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /organizations
@@ -10,8 +17,9 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function index()
 	{
+        $orgs = Organization::all();
 
-        return View::make('organizations.index');
+        return View::make('organizations.index')->with('orgs', $orgs);
 	}
 
 	/**
@@ -22,7 +30,8 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+
+        return View::make('organizations.create');
 	}
 
 	/**
@@ -33,7 +42,28 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::route('organizations.create')
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+
+            $org = $this->org->create($input);
+
+            return Redirect::route('organizations.index')->with('flash', array(
+                'class' => 'success',
+                'message' => 'Card Created.'
+            ));
+        }
 	}
 
 	/**

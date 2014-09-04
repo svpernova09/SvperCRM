@@ -1,7 +1,15 @@
 <?php
 
 class Organization extends \Eloquent {
-	protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'address',
+        'address2',
+        'city',
+        'state',
+        'zip',
+        'phone'
+    ];
 
     public function credentials()
     {
