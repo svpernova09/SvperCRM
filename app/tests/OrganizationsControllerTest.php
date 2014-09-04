@@ -75,4 +75,16 @@ class OrganizationsControllerTest extends TestCase {
         // The errors should be sent to the view
         $this->assertSessionHasErrors(['name']);
     }
+
+    public function testShow()
+    {
+        $this->mock
+            ->shouldReceive('find')
+            ->once();
+
+        $this->app->instance('Organization', $this->mock);
+
+        $this->call('GET', 'organizations/1');
+        $this->assertViewHas('org');
+    }
 }
