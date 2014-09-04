@@ -22,7 +22,7 @@ Organizations
 				<th>Phone</th>
 			</thead>
 			<tbody>
-                @foreach ($orgs as $org)
+                @foreach ($organizations as $org)
                     <tr>
                         <td>
                             <a href="{{ action('OrganizationsController@show', array($org->id)) }}">{{ $org->name }}</a>

@@ -17,9 +17,9 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function index()
 	{
-        $orgs = Organization::all();
+        $organizations = $this->org->all();
 
-        return View::make('organizations.index')->with('orgs', $orgs);
+        return View::make('organizations.index')->with('organizations', $organizations);
 	}
 
 	/**
@@ -75,7 +75,9 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$org = Organization::find($id);
+
+        return View::make('organizations.show')->with('org', $org);
 	}
 
 	/**

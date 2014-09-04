@@ -13,7 +13,8 @@
         "fzaninotto/faker": "dev-master",
         "way/generators": "~2.6.0",
         "barryvdh/laravel-ide-helper": "dev-master",
-        "phpunit/phpunit": "4.2.*"
+        "phpunit/phpunit": "3.7.*",
+        "codeception/codeception": "*"
     },
 	"autoload": {
 		"classmap": [
