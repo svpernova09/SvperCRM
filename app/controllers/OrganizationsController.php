@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class OrganizationsController extends \BaseController {
 
@@ -9,12 +10,6 @@ class OrganizationsController extends \BaseController {
         $this->org = $org;
     }
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /organizations
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
         $organizations = $this->org->all();
