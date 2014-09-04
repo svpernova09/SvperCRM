@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class OrganizationsController extends \BaseController {
 
@@ -84,7 +83,9 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+        $org = $this->org->find($id);
+
+        return View::make('organizations.edit')->with('org', $org);
 	}
 
 	/**
