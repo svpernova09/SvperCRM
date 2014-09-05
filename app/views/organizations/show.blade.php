@@ -30,13 +30,12 @@ View Organization
                     @endif
 		    	 </p>
 			@endif
-            @if ($org->is_agency)
-                <p><strong>This is an agency.</strong></p>
-            @endif
 			@if ($org->phone)
 		    	<p><strong>Phone:</strong>  {{ $org->phone }}</p>
 			@endif
-
+            @if ($org->is_agency)
+                <p><strong>This is an agency.</strong></p>
+            @endif
 		    
 		</div>
 		<div class="col-md-4">

@@ -97,7 +97,28 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $input = Input::all();
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::to('organizations/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            // store
+            $this->org = Organization::find($id);
+
+            $this->org->update($input);
+
+            // redirect
+            return Redirect::route('organizations.show', [$id])->with('flash', 'Your organization has been updated!');
+        }
 	}
 
 	/**
