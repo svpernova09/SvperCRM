@@ -24,11 +24,33 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+$env = $app->detectEnvironment(function() use ($app)
+{
+    if ($app->runningInConsole()) {
+        $folder = explode('/', $_SERVER['PWD']);
 
-	'local' => array('homestead'),
+        if (end($folder) == 'trophybox')
+        {
 
-));
+            return 'homestead';
+        }
+
+        if (end($folder) == 'crm.hackmemphis.com')
+        {
+
+            return 'production';
+        }
+
+    }
+
+    return getenv('LARAVEL_ENV') ?: 'homestead';
+});
+
+//$env = $app->detectEnvironment(array(
+//
+//	'local' => array('homestead'),
+//
+//));
 
 /*
 |--------------------------------------------------------------------------
