@@ -3,7 +3,7 @@
 {{-- Web site Title --}}
 @section('title')
 @parent
-Create New Organization
+Edit Organization
 @stop
 
 {{-- Content --}}
