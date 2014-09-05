@@ -146,7 +146,11 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$org = $this->org->find($id);
+
+        $org->delete();
+
+        return Redirect::route('organizations.index')->with('flash', 'Your organization has been removed!');
 	}
 
 }

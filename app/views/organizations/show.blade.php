@@ -66,7 +66,22 @@ View Organization
 			<p><em>Created: {{ $org->created_at }}</em></p>
 			<p><em>Last Updated: {{ $org->updated_at }}</em></p>
 			<button class="btn btn-primary" onClick="location.href='{{ action('OrganizationsController@edit', array($org->id)) }}'">Edit Organization</button>
+
+            <div class="btn-group">
+            {{ Form::open(array('route' => array('organizations.destroy', $org->id), 'method' => 'delete')) }}
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                Danger <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+
+                <li>
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                </li>
+            </ul>
+            {{ Form::close() }}
+            </div>
 		</div>
+
 	</div>
 
 
