@@ -60,6 +60,7 @@ Create New Organization
             </div>
 
             <div class="form-group {{ ($errors->has('agency_id')) ? 'has-error' : '' }}">
+                {{ Form::label('agency_id', 'Related Agency: ') }}
                 {{ Form::select('agency_id', $possibleAgencies, $org->agency_id) }}
             </div>
 
