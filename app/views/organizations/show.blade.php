@@ -15,7 +15,9 @@ View Organization
 		    @if ($org->address)
 		    	<p>
 		    	    <strong>Address:</strong><br />
-		    	    {{ $org->address }} <br />
+                    @if ($org->address)
+                        {{ $org->address }} <br />
+                    @endif
                     @if ($org->address2)
                         {{ $org->address2 }} <br />
                     @endif
@@ -36,7 +38,29 @@ View Organization
             @if ($org->is_agency)
                 <p><strong>This is an agency.</strong></p>
             @endif
-		    
+		    @if ($org->agency)
+		        <p>
+                    <strong>Related Agency:</strong><br>
+		            {{ $org->agency->name }}<br>
+                    @if ($org->agency->address)
+                        {{ $org->agency->address }} <br />
+                    @endif
+                    @if ($org->agency->address2)
+                        {{ $org->agency->address2 }} <br />
+                    @endif
+                    @if ($org->agency->city)
+                        {{ $org->agency->city }}
+                    @endif
+                    @if ($org->agency->state)
+                        {{ $org->agency->state }}
+                    @endif
+                    @if ($org->agency->zip)
+                        {{ $org->agency->zip }}
+                    @endif
+		        </p>
+
+
+		    @endif
 		</div>
 		<div class="col-md-4">
 			<p><em>Created: {{ $org->created_at }}</em></p>

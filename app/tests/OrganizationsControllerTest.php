@@ -88,15 +88,15 @@ class OrganizationsControllerTest extends TestCase {
         $this->assertViewHas('org');
     }
 
-    public function testEdit()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once();
-
-        $this->app->instance('Organization', $this->mock);
-
-        $this->call('GET', 'organizations/1/edit');
-        $this->assertViewHas('org');
-    }
+//    public function testEdit()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once();
+//
+//        $this->app->instance('Organization', $this->mock);
+//
+//        $this->call('GET', 'organizations/1/edit');
+//        $this->assertViewHas('org');
+//    }
 }

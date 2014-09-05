@@ -84,8 +84,17 @@ class OrganizationsController extends \BaseController {
 	public function edit($id)
 	{
         $org = $this->org->find($id);
+        $agencies = $this->org->where('is_agency', '1')->get();
 
-        return View::make('organizations.edit')->with('org', $org);
+        $possibleAgencies[] = '';
+        foreach($agencies as $agency)
+        {
+            $possibleAgencies[$agency->id] = $agency->name . ' ' . $agency->state;
+        }
+
+        return View::make('organizations.edit')
+            ->with('org', $org)
+            ->with('possibleAgencies', $possibleAgencies);
 	}
 
 	/**

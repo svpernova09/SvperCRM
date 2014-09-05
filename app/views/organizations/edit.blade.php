@@ -59,7 +59,11 @@ Create New Organization
                 {{ ($errors->has('is_agency') ? $errors->first('is_agency') : '') }}
             </div>
 
-            {{ Form::submit('Create Organization', array('class' => 'btn btn-primary')) }}
+            <div class="form-group {{ ($errors->has('agency_id')) ? 'has-error' : '' }}">
+                {{ Form::select('agency_id', $possibleAgencies, $org->agency_id) }}
+            </div>
+
+            {{ Form::submit('Update Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
     </div>

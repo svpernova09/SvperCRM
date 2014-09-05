@@ -48,4 +48,9 @@ class Organization extends \Eloquent {
 
         return $this->hasOne('Person', 'id', 'account_manager_id');
     }
+
+    public function getAgencyAttribute()
+    {
+        return Organization::find($this->agency_id);
+    }
 }
