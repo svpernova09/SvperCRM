@@ -8,7 +8,7 @@ View Person
 
 {{-- Content --}}
 @section('content')
-	<h4>{{ $person->name }}</h4>
+	<h4>{{ $person->name }} - {{ $person->organization->name }}</h4>
 	
   	<div class="well clearfix">
 	    <div class="col-md-8">
@@ -58,6 +58,9 @@ View Person
             @endif
             @if ($person->is_marketing_strategiest)
                 <p><strong>This is a marketing strategiest.</strong></p>
+            @endif
+            @if ($person->comments)
+                <p><strong>Comments:.</strong>{{ $person->comments }}</p>
             @endif
 		</div>
 		<div class="col-md-4">

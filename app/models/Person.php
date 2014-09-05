@@ -26,5 +26,9 @@ class Person extends \Eloquent {
         return $this->belongsTo('Organization');
     }
 
+    public function getOrganizationAttribute()
+    {
+        return Organization::find($this->organization_id);
+    }
 
 }

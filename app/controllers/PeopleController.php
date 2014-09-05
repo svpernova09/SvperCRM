@@ -27,10 +27,18 @@ class PeopleController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
-	}
+    public function create()
+    {
+        $allOrgs = Organization::all();
+
+        $orgs[] = '';
+        foreach($allOrgs as $org)
+        {
+            $orgs[$org->id] = $org->name . ' ' . $org->state;
+        }
+
+        return View::make('people.create')->with('orgs', $orgs);
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -38,10 +46,31 @@ class PeopleController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-        //
-	}
+    public function store()
+    {
+        $input = Input::all();
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::route('people.create')
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+
+            $person = $this->person->create($input);
+
+            return Redirect::route('people.index')->with('flash', array(
+                'class' => 'success',
+                'message' => 'Person Created.'
+            ));
+        }
+    }
 
 	/**
 	 * Display the specified resource.
@@ -64,10 +93,21 @@ class PeopleController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
-	}
+    public function edit($id)
+    {
+        $person = $this->person->find($id);
+        $allOrgs = Organization::all();
+
+        $orgs[] = '';
+        foreach($allOrgs as $org)
+        {
+            $orgs[$org->id] = $org->name . ' ' . $org->state;
+        }
+
+        return View::make('people.edit')
+            ->with('person', $person)
+            ->with('orgs', $orgs);
+    }
 
 	/**
 	 * Update the specified resource in storage.
@@ -78,7 +118,28 @@ class PeopleController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $input = Input::all();
+
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::to('people/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            // store
+            $this->person = Person::find($id);
+
+            $this->person->update($input);
+
+            // redirect
+            return Redirect::route('people.show', [$id])->with('flash', 'Your person has been updated!');
+        }
 	}
 
 	/**
