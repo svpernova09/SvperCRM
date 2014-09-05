@@ -10,7 +10,7 @@ Create New Organization
 @section('content')
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        {{ Form::open(array('action' => 'OrganizationsController@update')) }}
+        {{ Form::open(array('action' => 'OrganizationsController@store')) }}
 
             <h2>Create New Organization</h2>
 
