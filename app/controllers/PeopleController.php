@@ -151,7 +151,11 @@ class PeopleController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        $person = $this->person->find($id);
+
+        $person->delete();
+
+        return Redirect::route('people.index')->with('flash', 'Your person has been removed!');
 	}
 
 }

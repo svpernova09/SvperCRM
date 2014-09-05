@@ -67,6 +67,19 @@ View Person
 			<p><em>Created: {{ $person->created_at }}</em></p>
 			<p><em>Last Updated: {{ $person->updated_at }}</em></p>
 			<button class="btn btn-primary" onClick="location.href='{{ action('PeopleController@edit', array($person->id)) }}'">Edit Person</button>
+            <div class="btn-group">
+            {{ Form::open(array('route' => array('people.destroy', $person->id), 'method' => 'delete')) }}
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                Danger <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+
+                <li>
+                    {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
+                </li>
+            </ul>
+            {{ Form::close() }}
+            </div>
 		</div>
 	</div>
 
