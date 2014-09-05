@@ -24,8 +24,15 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function create()
 	{
+        $agencies = $this->org->where('is_agency', '1')->get();
 
-        return View::make('organizations.create');
+        $possibleAgencies[] = '';
+        foreach($agencies as $agency)
+        {
+            $possibleAgencies[$agency->id] = $agency->name . ' ' . $agency->state;
+        }
+
+        return View::make('organizations.create')->with('possibleAgencies', $possibleAgencies);
 	}
 
 	/**
