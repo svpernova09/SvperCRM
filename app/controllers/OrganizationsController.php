@@ -62,7 +62,7 @@ class OrganizationsController extends \BaseController {
 
             return Redirect::route('organizations.index')->with('flash', array(
                 'class' => 'success',
-                'message' => 'Card Created.'
+                'message' => 'Organization Created.'
             ));
         }
 	}
