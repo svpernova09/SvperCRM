@@ -2,6 +2,12 @@
 
 class PeopleController extends \BaseController {
 
+    protected $person;
+
+    public function __construct(Person $person)
+    {
+        $this->person = $person;
+    }
 	/**
 	 * Display a listing of the resource.
 	 * GET /people
@@ -10,7 +16,9 @@ class PeopleController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('people.index');
+        $people = $this->person->all();
+
+        return View::make('people.index')->with('people', $people);
 	}
 
 	/**
@@ -32,7 +40,7 @@ class PeopleController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        //
 	}
 
 	/**
@@ -44,7 +52,9 @@ class PeopleController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+        $person = $this->person->find($id);
+
+        return View::make('people.show')->with('person', $person);
 	}
 
 	/**

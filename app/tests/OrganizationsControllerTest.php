@@ -29,12 +29,12 @@ class OrganizationsControllerTest extends TestCase {
 
     }
 
-    public function testCreate()
-    {
-        $this->call('GET', '/organizations/create');
-
-        $this->assertResponseOk();
-    }
+//    public function testCreate()
+//    {
+//        $this->call('GET', '/organizations/create');
+//
+//        $this->assertResponseOk();
+//    }
 
     public function testStoreSuccess()
     {
