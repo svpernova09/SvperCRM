@@ -26,6 +26,11 @@ class CreatePeopleTable extends Migration {
 			$table->string('mobile_phone');
 			$table->string('email');
 			$table->text('comments');
+            $table->boolean('is_sales_person');
+            $table->boolean('is_account_manager');
+            $table->boolean('is_designer');
+            $table->boolean('is_developer');
+            $table->boolean('is_marketing_strategiest');
 			$table->timestamps();
 		});
 	}
