@@ -8,7 +8,9 @@ class Organization extends \Eloquent {
         'city',
         'state',
         'zip',
-        'phone'
+        'phone',
+        'agency_id',
+        'is_agency'
     ];
 
     public function credentials()

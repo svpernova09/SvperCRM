@@ -53,6 +53,12 @@ Create New Organization
                 {{ ($errors->has('phone') ? $errors->first('phone') : '') }}
             </div>
 
+            <div class="checkbox {{ ($errors->has('is_agency')) ? 'has-error' : '' }}">
+                {{ Form::label('is_agency', 'This is an Agency') }}
+                {{ Form::checkbox('is_agency', '1', null, ['class' => 'checkbox']) }}
+                {{ ($errors->has('is_agency') ? $errors->first('is_agency') : '') }}
+            </div>
+
             {{ Form::submit('Create Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

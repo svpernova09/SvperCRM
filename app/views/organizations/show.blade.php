@@ -30,6 +30,9 @@ View Organization
                     @endif
 		    	 </p>
 			@endif
+            @if ($org->is_agency)
+                <p><strong>This is an agency.</strong></p>
+            @endif
 			@if ($org->phone)
 		    	<p><strong>Phone:</strong>  {{ $org->phone }}</p>
 			@endif
@@ -47,7 +50,7 @@ View Organization
 	
 	<hr />
 
-	<h4>User Object</h4>
+	<h4>Ogranization Object</h4>
 	<div>
 		<p>{{ var_dump($org) }}</p>
 	</div>

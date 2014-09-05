@@ -22,9 +22,10 @@ class CreateOrganizationsTable extends Migration {
 			$table->string('state');
 			$table->string('zip');
 			$table->string('phone');
-			$table->string('agency_id');
 			$table->string('salesperson_id');
 			$table->string('account_manager_id');
+            $table->boolean('is_agency');
+            $table->string('agency_id');
 			$table->timestamps();
 		});
 	}
