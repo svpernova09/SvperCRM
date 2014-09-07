@@ -20,6 +20,7 @@ class CreateMarketingretainersTable extends Migration {
 			$table->string('strategist_id');
 			$table->string('account_manager_id');
 			$table->text('domain');
+            $table->text('comments');
 			$table->timestamps();
 		});
 	}

@@ -26,6 +26,7 @@ class CreateOrganizationsTable extends Migration {
 			$table->string('account_manager_id');
             $table->boolean('is_agency');
             $table->string('agency_id');
+            $table->text('comments');
 			$table->timestamps();
 		});
 	}

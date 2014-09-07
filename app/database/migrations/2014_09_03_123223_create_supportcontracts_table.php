@@ -23,6 +23,7 @@ class CreateSupportcontractsTable extends Migration {
 			$table->string('developer_id');
 			$table->text('platform');
 			$table->text('domain');
+            $table->text('comments');
 			$table->timestamps();
 		});
 	}
