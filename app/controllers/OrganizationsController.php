@@ -7,6 +7,7 @@ class OrganizationsController extends \BaseController {
     public function __construct(Organization $org)
     {
         $this->org = $org;
+        $this->person = new Person;
     }
 
 	public function index()
@@ -25,6 +26,20 @@ class OrganizationsController extends \BaseController {
 	public function create()
 	{
         $agencies = $this->org->where('is_agency', '1')->get();
+        $sales = $this->person->where('is_sales_person', '1')->get();
+        $accounts = $this->person->where('is_account_manager', '1')->get();
+
+        $salesPeople[] = '';
+        foreach($sales as $sale)
+        {
+            $salesPeople[$sale->id] = $sale->name . ' ' . $sale->state;
+        }
+
+        $accountManagers[] = '';
+        foreach($accounts as $account)
+        {
+            $accountManagers[$account->id] = $account->name . ' ' . $account->state;
+        }
 
         $possibleAgencies[] = '';
         foreach($agencies as $agency)
@@ -32,7 +47,10 @@ class OrganizationsController extends \BaseController {
             $possibleAgencies[$agency->id] = $agency->name . ' ' . $agency->state;
         }
 
-        return View::make('organizations.create')->with('possibleAgencies', $possibleAgencies);
+        return View::make('organizations.create')
+            ->with('possibleAgencies', $possibleAgencies)
+            ->with('salesPeople', $salesPeople)
+            ->with('accountManagers', $accountManagers);
 	}
 
 	/**

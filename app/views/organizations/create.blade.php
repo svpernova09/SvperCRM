@@ -69,6 +69,16 @@ Create New Organization
                 {{ Form::textarea('comments') }}
             </div>
 
+            <div class="form-group {{ ($errors->has('salesperson_id')) ? 'has-error' : '' }}">
+                {{ Form::label('salesperson_id', 'Sales Person: ') }}
+                {{ Form::select('salesperson_id', $salesPeople) }}
+            </div>
+
+            <div class="form-group {{ ($errors->has('account_manager_id')) ? 'has-error' : '' }}">
+                {{ Form::label('account_manager_id', 'Account Manager: ') }}
+                {{ Form::select('account_manager_id', $accountManagers) }}
+            </div>
+
             {{ Form::submit('Create Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
