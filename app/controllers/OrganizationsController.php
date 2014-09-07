@@ -187,4 +187,56 @@ class OrganizationsController extends \BaseController {
         return Redirect::route('organizations.index')->with('flash', 'Your organization has been removed!');
 	}
 
+    /**
+     * Show form to upload CSV
+     * @return mixed
+     */
+    public function upload()
+    {
+        return View::make('organizations.upload');
+    }
+
+    /**
+     * Process the uploaded CSV file
+     */
+    public function import()
+    {
+        if (Input::hasFile('csv')) {
+
+            $upload = fopen(Input::file('csv')->getRealPath(), 'r');
+            $rowCount = 0;
+
+            while (($row = fgetcsv($upload)) !== FALSE) {
+
+                if($rowCount != 0)
+                {
+                    $org = new Organization;
+
+                    $org->name = $row['0'];
+                    $org->address = $row['1'];
+                    $org->address2 = $row['2'];
+                    $org->city = $row['3'];
+                    $org->state = $row['4'];
+                    $org->zip = $row['5'];
+                    $org->phone = $row['6'];
+                    $org->salesperson_id = $row['7'];
+                    $org->account_manager_id = $row['8'];
+                    $org->is_agency = $row['9'];
+                    $org->agency_id = $row['10'];
+                    $org->comments = $row['11'];
+
+                    $org->save();
+                }
+
+                $rowCount++;
+            }
+            fclose($upload);
+
+            return Redirect::route('organizations.index')->with('flash', 'Your file has been imported');
+        } else {
+
+            Redirect::route('import.people')->with('flash', 'There was no file in your submission');
+        }
+
+    }
 }

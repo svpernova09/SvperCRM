@@ -10,13 +10,16 @@ Create New Organization
 @section('content')
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
-        {{ Form::open(array('action' => 'OrganizationsController@store')) }}
-
             <h2>Create New Organization</h2>
+
+            <div class="form_group">
+                <button class="btn btn-primary" onClick="location.href='{{ URL::action('OrganizationsController@upload') }}'">Import Organizations from file</button>
+            </div>
 
             <div class="form_group">
                 * denotes required fields.
             </div>
+            {{ Form::open(array('action' => 'OrganizationsController@store')) }}
 
             <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
                 {{ Form::text('name', null, array('class' => 'form-control', 'placeholder' => 'Name *')) }}
