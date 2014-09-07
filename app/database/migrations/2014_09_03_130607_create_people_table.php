@@ -31,7 +31,6 @@ class CreatePeopleTable extends Migration {
             $table->boolean('is_designer');
             $table->boolean('is_developer');
             $table->boolean('is_marketing_strategiest');
-            $table->text('comments');
 			$table->timestamps();
 		});
 	}
