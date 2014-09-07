@@ -28,4 +28,8 @@ Route::group(array('before' => 'Sentinel\auth'), function()
     # People Importer
     Route::post('import/people', 'PeopleController@import');
     Route::get('import/people', array('as' => 'import.people', 'uses' => 'PeopleController@upload'));
+
+    # Organizations Importer
+    Route::post('import/organizations', 'OrganizationsController@import');
+    Route::get('import/organizations', array('as' => 'import.organizations', 'uses' => 'OrganizationsController@upload'));
 });
