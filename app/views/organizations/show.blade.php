@@ -58,12 +58,19 @@ View Organization
                         {{ $org->agency->zip }}
                     @endif
 		        </p>
+		    @endif
+            @if ($org->salesPerson)
+                <p><strong>Sales Person:</strong></p>
+                <p>{{ $org->salesPerson->name }}</p>
+            @endif
+            @if ($org->accountManager)
+                <p><strong>Account Manager:</strong></p>
+                <p>{{ $org->accountManager->name }}</p>
+            @endif
             @if ($org->comments)
                 <p><strong>Comments:</strong></p>
-                <p>$org->comments</p>
+                <p>{{ $org->comments }}</p>
             @endif
-
-		    @endif
 		</div>
 		<div class="col-md-4">
 			<p><em>Created: {{ $org->created_at }}</em></p>

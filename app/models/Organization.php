@@ -10,7 +10,10 @@ class Organization extends \Eloquent {
         'zip',
         'phone',
         'agency_id',
-        'is_agency'
+        'is_agency',
+        'comments',
+        'salesperson_id',
+        'account_manager_id'
     ];
 
     public function credentials()
@@ -52,5 +55,15 @@ class Organization extends \Eloquent {
     public function getAgencyAttribute()
     {
         return Organization::find($this->agency_id);
+    }
+
+    public function getSalesPersonAttribute()
+    {
+        return Person::find($this->salesperson_id);
+    }
+
+    public function getAccountManagerAttribute()
+    {
+        return Person::find($this->account_manager_id);
     }
 }

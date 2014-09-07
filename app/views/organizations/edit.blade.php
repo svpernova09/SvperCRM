@@ -69,6 +69,16 @@ Edit Organization
                 {{ ($errors->has('comments') ? $errors->first('comments') : '') }}
             </div>
 
+            <div class="form-group {{ ($errors->has('salesperson_id')) ? 'has-error' : '' }}">
+                {{ Form::label('salesperson_id', 'Sales Person: ') }}
+                {{ Form::select('salesperson_id', $salesPeople, $org->salesperson_id) }}
+            </div>
+
+            <div class="form-group {{ ($errors->has('account_manager_id')) ? 'has-error' : '' }}">
+                {{ Form::label('account_manager_id', 'Account Manager: ') }}
+                {{ Form::select('account_manager_id', $accountManagers, $org->account_manager_id) }}
+            </div>
+
             {{ Form::submit('Update Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

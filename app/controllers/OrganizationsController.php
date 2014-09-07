@@ -110,6 +110,20 @@ class OrganizationsController extends \BaseController {
 	{
         $org = $this->org->find($id);
         $agencies = $this->org->where('is_agency', '1')->get();
+        $sales = $this->person->where('is_sales_person', '1')->get();
+        $accounts = $this->person->where('is_account_manager', '1')->get();
+
+        $salesPeople[] = '';
+        foreach($sales as $sale)
+        {
+            $salesPeople[$sale->id] = $sale->name . ' ' . $sale->state;
+        }
+
+        $accountManagers[] = '';
+        foreach($accounts as $account)
+        {
+            $accountManagers[$account->id] = $account->name . ' ' . $account->state;
+        }
 
         $possibleAgencies[] = '';
         foreach($agencies as $agency)
@@ -119,7 +133,9 @@ class OrganizationsController extends \BaseController {
 
         return View::make('organizations.edit')
             ->with('org', $org)
-            ->with('possibleAgencies', $possibleAgencies);
+            ->with('possibleAgencies', $possibleAgencies)
+            ->with('salesPeople', $salesPeople)
+            ->with('accountManagers', $accountManagers);
 	}
 
 	/**
