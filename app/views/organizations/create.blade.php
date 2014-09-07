@@ -63,6 +63,12 @@ Create New Organization
                 {{ Form::label('agency_id', 'Related Agency: ') }}
                 {{ Form::select('agency_id', $possibleAgencies) }}
             </div>
+
+            <div class="form-group {{ ($errors->has('comments')) ? 'has-error' : '' }}">
+                {{ Form::label('comments', 'Comments: ') }}
+                {{ Form::textarea('comments') }}
+            </div>
+
             {{ Form::submit('Create Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

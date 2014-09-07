@@ -64,6 +64,11 @@ Edit Organization
                 {{ Form::select('agency_id', $possibleAgencies, $org->agency_id) }}
             </div>
 
+            <div class="form-group {{ ($errors->has('comments')) ? 'has-error' : '' }}">
+                {{ Form::textarea('comments', $org->comments, array('class' => 'form-control', 'placeholder' => 'Comments')) }}
+                {{ ($errors->has('comments') ? $errors->first('comments') : '') }}
+            </div>
+
             {{ Form::submit('Update Organization', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}

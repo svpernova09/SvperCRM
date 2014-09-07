@@ -58,7 +58,10 @@ View Organization
                         {{ $org->agency->zip }}
                     @endif
 		        </p>
-
+            @if ($org->comments)
+                <p><strong>Comments:</strong></p>
+                <p>$org->comments</p>
+            @endif
 
 		    @endif
 		</div>
