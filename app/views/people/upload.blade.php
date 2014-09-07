@@ -14,7 +14,7 @@ Import People
         <p><a href="/packages/people-import.csv" target="_blank">Download sample CSV</a></p>
         {{ Form::open(array('action' => 'PeopleController@import', 'files' => 'true')) }}
 
-            <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
+            <div class="form-group {{ ($errors->has('csv')) ? 'has-error' : '' }}">
                 {{ Form::label('csv', 'Import People') }}
                 {{ Form::file('csv') }}
             </div>
