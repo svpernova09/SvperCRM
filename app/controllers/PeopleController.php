@@ -158,4 +158,60 @@ class PeopleController extends \BaseController {
         return Redirect::route('people.index')->with('flash', 'Your person has been removed!');
 	}
 
+    /**
+     * Show form to upload CSV
+     * @return mixed
+     */
+    public function upload()
+    {
+        return View::make('people.upload');
+    }
+
+    /**
+     * Process the uploaded CSV file
+     */
+    public function import()
+    {
+        if (Input::hasFile('csv')) {
+
+            $upload = fopen(Input::file('csv')->getRealPath(), 'r');
+            $rowCount = 0;
+
+            while (($row = fgetcsv($upload)) !== FALSE) {
+
+                if($rowCount != 0)
+                {
+                    $person = new Person;
+
+                    $person->name = $row['0'];
+                    $person->organization_id = $row['1'];
+                    $person->address = $row['2'];
+                    $person->address2 = $row['3'];
+                    $person->city = $row['4'];
+                    $person->state = $row['5'];
+                    $person->zip = $row['6'];
+                    $person->office_phone = $row['7'];
+                    $person->mobile_phone = $row['8'];
+                    $person->email = $row['9'];
+                    $person->comments = $row['10'];
+                    $person->is_sales_person = $row['11'];
+                    $person->is_account_manager = $row['12'];
+                    $person->is_designer = $row['13'];
+                    $person->is_developer = $row['14'];
+                    $person->is_marketing_strategiest = $row['15'];
+
+                    $person->save();
+                }
+
+                $rowCount++;
+            }
+            fclose($upload);
+
+            return Redirect::route('people.index')->with('flash', 'Your file has been imported');
+        } else {
+
+            Redirect::route('import.people')->with('flash', 'There was no file in your submission');
+        }
+
+    }
 }

@@ -18,10 +18,14 @@ Route::get('/', array('as' => 'home', function()
 
 Route::group(array('before' => 'Sentinel\auth'), function()
 {
+    # Resources
     Route::resource('organizations', 'OrganizationsController');
     Route::resource('supportcontracts', 'SupportcontractsController');
     Route::resource('marketingretainers', 'MarketingretainersController');
     Route::resource('people', 'PeopleController');
     Route::resource('credentials', 'CredentialsController');
 
+    # People Importer
+    Route::post('import/people', 'PeopleController@import');
+    Route::get('import/people', array('as' => 'import.people', 'uses' => 'PeopleController@upload'));
 });

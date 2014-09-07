@@ -1,0 +1,6 @@
+name,organization_id,address,address2,city,state,zip,office_phone,mobile_phone,email,comments,is_sales_person,is_account_manager,is_designer,is_developer,is_marketing_strategiest
+"James Sales",1,"88 Union Ave","Floor 7","Memphis","TN","38104","1234567890","0987654321","launch@gorocketfuel.com","",1,0,0,0,0
+"James Account",1,"88 Union Ave","Floor 7","Memphis","TN","38104","1234567890","0987654321","launch@gorocketfuel.com","",0,1,0,0,0
+"James Design",1,"88 Union Ave","Floor 7","Memphis","TN","38104","1234567890","0987654321","launch@gorocketfuel.com","",0,0,1,0,0
+"James Development",1,"88 Union Ave","Floor 7","Memphis","TN","38104","1234567890","0987654321","launch@gorocketfuel.com","",0,0,0,1,0
+"James Marketing",1,"88 Union Ave","Floor 7","Memphis","TN","38104","1234567890","0987654321","launch@gorocketfuel.com","",0,0,0,0,1
