@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'joe@hackmemphis.com', 'name' => 'SvperCRM'),
 
 	/*
 	|--------------------------------------------------------------------------
