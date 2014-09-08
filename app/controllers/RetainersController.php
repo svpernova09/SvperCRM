@@ -2,16 +2,27 @@
 
 class RetainersController extends \BaseController {
 
+    protected $retainer;
+
+    public function __construct(Retainer $retainer)
+    {
+        $this->retainer = $retainer;
+        $this->person = new Person;
+//        $this->org = new Organization;
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /retainers
 	 *
 	 * @return Response
 	 */
-	public function index()
-	{
-		//
-	}
+    public function index()
+    {
+        $retainers = $this->retainer->all();
+
+        return View::make('retainers.index')->with('retainers', $retainers);
+    }
 
 	/**
 	 * Show the form for creating a new resource.
@@ -19,10 +30,27 @@ class RetainersController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
-	}
+    public function create()
+    {
+        $accounts = $this->person->where('is_account_manager', '1')->get();
+        $strats = $this->person->where('is_marketing_strategiest', '1')->get();
+
+        $accountManagers[] = '';
+        foreach($accounts as $account)
+        {
+            $accountManagers[$account->id] = $account->name . ' ' . $account->state;
+        }
+
+        $marketers[] = '';
+        foreach($strats as $strat)
+        {
+            $marketers[$strat->id] = $strat->name . ' ' . $strat->state;
+        }
+
+        return View::make('retainers.create')
+            ->with('marketers', $marketers)
+            ->with('accountManagers', $accountManagers);
+    }
 
 	/**
 	 * Store a newly created resource in storage.
