@@ -23,7 +23,8 @@ Route::group(array('before' => 'Sentinel\auth'), function()
     Route::resource('people', 'PeopleController');
     Route::resource('credentials', 'CredentialsController');
     Route::resource('retainers', 'RetainersController');
-
+    Route::resource('contracts', 'ContractsController');
+    
     # People Importer
     Route::post('import/people', 'PeopleController@import');
     Route::get('import/people', array('as' => 'import.people', 'uses' => 'PeopleController@upload'));
