@@ -55,8 +55,8 @@
 					<li {{ (Request::is('groups*') ? 'class="active"' : '') }}><a href="{{ URL::action('Sentinel\GroupController@index') }}">Groups</a></li>
 					<li {{ (Request::is('organizations*') ? 'class="active"' : '') }}><a href="{{ URL::action('OrganizationsController@index') }}">Organizations</a></li>
 					<li {{ (Request::is('people*') ? 'class="active"' : '') }}><a href="{{ URL::action('PeopleController@index') }}">People</a></li>
-					<li {{ (Request::is('marketingretainers*') ? 'class="active"' : '') }}><a href="{{ URL::action('MarketingretainersController@index') }}">Retainers</a></li>
-					<li {{ (Request::is('supportcontracts*') ? 'class="active"' : '') }}><a href="{{ URL::action('SupportcontractsController@index') }}">Contracts</a></li>
+					<li {{ (Request::is('marketingretainers*') ? 'class="active"' : '') }}><a href="{{ URL::action('RetainersController@index') }}">Retainers</a></li>
+					<li {{ (Request::is('supportcontracts*') ? 'class="active"' : '') }}><a href="{{ URL::action('ContractsController@index') }}">Contracts</a></li>
 				@endif
 	          </ul>
 	          <ul class="nav navbar-nav navbar-right">
