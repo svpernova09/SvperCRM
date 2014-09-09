@@ -2,6 +2,14 @@
 
 class ContractsController extends \BaseController {
 
+    protected $retainer;
+
+    public function __construct(Contract $contract)
+    {
+        $this->contract = $contract;
+        $this->person = new Person;
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /contracts
@@ -10,7 +18,9 @@ class ContractsController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+        $contracts = $this->contract->all();
+
+        return View::make('contracts.index')->with('contracts', $contracts);
 	}
 
 	/**
@@ -19,10 +29,27 @@ class ContractsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
-	}
+    public function create()
+    {
+        $devs = $this->person->where('is_developer', '1')->get();
+        $designs = $this->person->where('is_designer', '1')->get();
+
+        $developers[] = '';
+        foreach($devs as $dev)
+        {
+            $developers[$dev->id] = $dev->name . ' ' . $dev->state;
+        }
+
+        $designers[] = '';
+        foreach($designs as $design)
+        {
+            $designers[$design->id] = $design->name . ' ' . $design->state;
+        }
+
+        return View::make('contracts.create')
+            ->with('developers', $developers)
+            ->with('designers', $designers);
+    }
 
 	/**
 	 * Store a newly created resource in storage.
@@ -44,7 +71,9 @@ class ContractsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+        $contract = $this->contract->find($id);
+
+        return View::make('contracts.show')->with('contract', $contract);
 	}
 
 	/**
@@ -54,10 +83,30 @@ class ContractsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
-	}
+    public function edit($id)
+    {
+        $contract = $this->contract->find($id);
+        $devs = $this->person->where('is_developer', '1')->get();
+        $designs = $this->person->where('is_designer', '1')->get();
+
+        $developers[] = '';
+        foreach($devs as $dev)
+        {
+            $developers[$dev->id] = $dev->name . ' ' . $dev->state;
+        }
+
+        $designers[] = '';
+        foreach($designs as $design)
+        {
+            $designers[$design->id] = $design->name . ' ' . $design->state;
+        }
+
+        return View::make('contracts.edit')
+            ->with('contract', $contract)
+            ->with('designers', $designers)
+            ->with('developers', $developers);
+    }
+
 
 	/**
 	 * Update the specified resource in storage.
