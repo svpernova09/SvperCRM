@@ -15,4 +15,16 @@ class Retainer extends \Eloquent {
 
         return $this->belongsTo('Organization');
     }
+
+    public function getstrategiestAttribute()
+    {
+
+        return Person::find($this->strategiest_id);
+    }
+
+    public function getaccountManagerAttribute()
+    {
+
+        return Person::find($this->account_manager_id);
+    }
 }
