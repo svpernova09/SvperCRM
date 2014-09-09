@@ -57,10 +57,31 @@ class ContractsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
-	}
+    public function store()
+    {
+        $input = Input::all();
+
+        $rules = [
+            'title' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::route('contracts.create')
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+
+            $contract = $this->contract->create($input);
+
+            return Redirect::route('contracts.index')->with('flash', array(
+                'class' => 'success',
+                'message' => 'Contract Created.'
+            ));
+        }
+    }
 
 	/**
 	 * Display the specified resource.
@@ -117,7 +138,28 @@ class ContractsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+        $input = Input::all();
+
+        $rules = [
+            'title' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::to('contracts/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            // store
+            $this->contract = Contract::find($id);
+
+            $this->contract->update($input);
+
+            // redirect
+            return Redirect::route('contracts.show', [$id])->with('flash', 'Your Contract has been updated!');
+        }
 	}
 
 	/**
@@ -129,7 +171,11 @@ class ContractsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        $contract = Contract::find($id);
+
+        $contract->delete();
+
+        return Redirect::route('contracts.index')->with('flash', 'Your Contract has been removed!');
 	}
 
 }

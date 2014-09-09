@@ -28,12 +28,12 @@ Edit Contract
             </div>
 
             <div class="form-group {{ ($errors->has('start_date')) ? 'has-error' : '' }}">
-                {{ Form::text('start_date', $contract->start_date, array('class' => 'form-control', 'placeholder' => 'Start Date')) }}
+                {{ Form::text('start_date', $contract->start_date, array('class' => 'form-control', 'placeholder' => 'Start Date (0000-00-00 00:00:00)')) }}
                 {{ ($errors->has('start_date') ? $errors->first('start_date') : '') }}
             </div>
 
             <div class="form-group {{ ($errors->has('end_date')) ? 'has-error' : '' }}">
-                {{ Form::text('end_date', $contract->end_date, array('class' => 'form-control', 'placeholder' => 'End Date')) }}
+                {{ Form::text('end_date', $contract->end_date, array('class' => 'form-control', 'placeholder' => 'End Date (0000-00-00 00:00:00)')) }}
                 {{ ($errors->has('end_date') ? $errors->first('end_date') : '') }}
             </div>
 
@@ -43,7 +43,7 @@ Edit Contract
             </div>
 
             <div class="form-group {{ ($errors->has('platform')) ? 'has-error' : '' }}">
-                {{ Form::text('platform', $contract->platform, array('class' => 'form-control', 'placeholder' => 'Platform')) }}
+                {{ Form::textarea('platform', $contract->platform, array('class' => 'form-control', 'placeholder' => 'Platform')) }}
                 {{ ($errors->has('platform') ? $errors->first('platform') : '') }}
             </div>
 
