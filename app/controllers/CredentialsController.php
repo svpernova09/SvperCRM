@@ -2,6 +2,13 @@
 
 class CredentialsController extends \BaseController {
 
+    protected $credential;
+
+    public function __construct(Credential $credential)
+    {
+        $this->credential = $credential;
+    }
+
 	/**
 	 * Display a listing of the resource.
 	 * GET /credentials
@@ -10,7 +17,9 @@ class CredentialsController extends \BaseController {
 	 */
 	public function index($organization_id)
 	{
-		//
+        $credentials = $this->credential->where('organization_id', $organization_id)->get();
+
+        return View::make('credentials.index')->with('credentials', $credentials);
 	}
 
 	/**
@@ -21,7 +30,8 @@ class CredentialsController extends \BaseController {
 	 */
 	public function create($organization_id)
 	{
-		//
+
+        return View::make('credentials.create')->with('organization_id', $organization_id);
 	}
 
 	/**
@@ -32,7 +42,28 @@ class CredentialsController extends \BaseController {
 	 */
 	public function store($organization_id)
 	{
-		//
+        $input = Input::all();
+
+        $rules = [
+            'service_name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            Redirect::to('organizataions/' . $organization_id . '/credentials/create')
+                ->withInput()
+                ->withErrors($validator);
+        } else {
+
+            $credential = $this->credential->create($input);
+
+            return Redirect::route('credentials.index')->with('flash', array(
+                'class' => 'success',
+                'message' => 'Credential Created.'
+            ));
+        }
 	}
 
 	/**
@@ -42,9 +73,11 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($organization_id, $id)
+	public function show($id)
 	{
-		//
+        $credential = $this->credential->find($id);
+
+        return View::make('credentials.show')->with('credential', $credential);
 	}
 
 	/**
@@ -54,9 +87,11 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($organization_id, $id)
+	public function edit($id)
 	{
-		//
+        $credential = $this->credential->find($id);
+
+        return View::make('credentials.edit')->with('credential', $credential);
 	}
 
 	/**
@@ -68,7 +103,28 @@ class CredentialsController extends \BaseController {
 	 */
 	public function update($organization_id, $id)
 	{
-		//
+        $input = Input::all();
+
+        $rules = [
+            'service_name' => 'required'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->fails()) {
+
+            return Redirect::to('organizataions/' . $organization_id . '/credentials/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput($input);
+        } else {
+            // store
+            $this->credential = Credential::find($id);
+
+            $this->credential->update($input);
+
+            // redirect
+            return Redirect::route('credentials.show', [$id])->with('flash', 'Your Credential has been updated!');
+        }
 	}
 
 	/**
