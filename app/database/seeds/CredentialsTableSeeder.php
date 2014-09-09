@@ -13,6 +13,7 @@ class CredentialsTableSeeder extends Seeder {
 		{
 			Credential::create([
                 'service_name' => $faker->name,
+                'organization_id' => $index,
                 'user_name' => $faker->userName,
                 'password' => $faker->password,
                 'comments' => $faker->text

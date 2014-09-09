@@ -21,7 +21,7 @@ Route::group(array('before' => 'Sentinel\auth'), function()
     # Resources
     Route::resource('organizations', 'OrganizationsController');
     Route::resource('people', 'PeopleController');
-    Route::resource('credentials', 'CredentialsController');
+    Route::resource('organizations.credentials', 'CredentialsController');
     Route::resource('retainers', 'RetainersController');
     Route::resource('contracts', 'ContractsController');
 

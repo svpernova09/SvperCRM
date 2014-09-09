@@ -8,7 +8,7 @@ class CredentialsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index($organization_id)
 	{
 		//
 	}
@@ -19,7 +19,7 @@ class CredentialsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($organization_id)
 	{
 		//
 	}
@@ -30,7 +30,7 @@ class CredentialsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($organization_id)
 	{
 		//
 	}
@@ -42,7 +42,7 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($organization_id, $id)
 	{
 		//
 	}
@@ -54,7 +54,7 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($organization_id, $id)
 	{
 		//
 	}
@@ -66,7 +66,7 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($organization_id, $id)
 	{
 		//
 	}
