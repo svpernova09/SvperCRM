@@ -54,3 +54,19 @@ Bug Reports and Pull Requests are encouraged. The primary agency needs will alwa
 * account_manager_id
 * domain
 * comments
+
+
+### Contracts
+
+* 1 to many with Organizations
+
+####Fields:
+
+* title
+* hours
+* start_date
+* end_date
+* designer_id
+* developer_id
+* platform
+* domain
