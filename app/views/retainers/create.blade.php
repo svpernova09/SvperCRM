@@ -51,7 +51,7 @@ Create New Retainer
                 {{ Form::select('account_manager_id', $accountManagers) }}
             </div>
 
-            {{ Form::submit('Create Organization', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Create Retainer', array('class' => 'btn btn-primary')) }}
 
         {{ Form::close() }}
     </div>
