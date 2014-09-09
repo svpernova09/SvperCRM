@@ -41,3 +41,16 @@ Bug Reports and Pull Requests are encouraged. The primary agency needs will alwa
 * Office Phone
 * Mobile Phone
 * Comments
+
+### Retainers
+
+* 1 to many with Organizations
+
+####Fields:
+
+* title
+* hours
+* strategiest_id
+* account_manager_id
+* domain
+* comments
