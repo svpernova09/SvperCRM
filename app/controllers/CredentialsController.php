@@ -136,7 +136,11 @@ class CredentialsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+        $this->credential = Credential::find($id);
+
+        $this->credential->delete();
+
+        return Redirect::route('credentials.index')->with('flash', 'Your Credential has been removed!');
 	}
 
 }
