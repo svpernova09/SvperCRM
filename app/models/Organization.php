@@ -66,4 +66,9 @@ class Organization extends \Eloquent {
     {
         return Person::find($this->account_manager_id);
     }
+
+    public function getcredentialsAttribute()
+    {
+        return Credential::where('organization_id', $this->id)->get();
+    }
 }

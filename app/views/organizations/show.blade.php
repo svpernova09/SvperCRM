@@ -91,9 +91,18 @@ View Organization
             {{ Form::close() }}
             </div>
 		</div>
-
 	</div>
-
+	
+    @if (count($org->credentials) > 0)
+        <div class="well clearfix">
+            <h4>Credentials</h4>
+            <div class="col-md-12">
+                @foreach ($org->credentials as $cred)
+                    <p>Service Name: {{ $cred->service_name }}</p>
+                @endforeach
+            </div>
+        </div>
+    @endif
 
 	
 	<hr />
