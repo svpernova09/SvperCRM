@@ -92,7 +92,7 @@ View Organization
             </div>
 		</div>
 	</div>
-	
+
     @if (count($org->credentials) > 0)
         <div class="well clearfix">
             <h4>Credentials</h4>

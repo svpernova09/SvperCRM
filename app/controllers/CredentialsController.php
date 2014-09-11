@@ -43,6 +43,7 @@ class CredentialsController extends \BaseController {
 	public function store($organization_id)
 	{
         $input = Input::all();
+        $input['organization_id'] = $organization_id;
 
         $rules = [
             'service_name' => 'required'
@@ -52,14 +53,14 @@ class CredentialsController extends \BaseController {
 
         if ($validator->fails()) {
 
-            Redirect::to('organizataions/' . $organization_id . '/credentials/create')
+            Redirect::route('organizations.credentials.create', array('id', $organization_id))
                 ->withInput()
                 ->withErrors($validator);
         } else {
 
             $credential = $this->credential->create($input);
 
-            return Redirect::route('credentials.index')->with('flash', array(
+            return Redirect::route('organizations.show', array($organization_id))->with('flash', array(
                 'class' => 'success',
                 'message' => 'Credential Created.'
             ));
