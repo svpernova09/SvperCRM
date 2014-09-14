@@ -31,4 +31,9 @@ class Person extends \Eloquent {
         return Organization::find($this->organization_id);
     }
 
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
 }

@@ -24,7 +24,7 @@ People
                 @foreach ($people as $person)
                     <tr>
                         <td>
-                            <a href="{{ action('PeopleController@show', array($person->id)) }}">{{ $person->name }}</a>
+                            <a href="{{ action('PeopleController@show', array($person->id)) }}">{{ $person->name }} </a>
                         </td>
                         <td>
                             {{ $person->city }}
