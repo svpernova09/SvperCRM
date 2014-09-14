@@ -15,5 +15,10 @@ class BackendServiceProvider extends ServiceProvider {
             'SvperCRM\Repositories\PersonRepositoryInterface',
             'SvperCRM\Repositories\DbPersonRepository'
         );
+
+        $this->app->bind(
+            'SvperCRM\Repositories\ContractRepositoryInterface',
+            'SvperCRM\Repositories\DbContractRepository'
+        );
     }
 }

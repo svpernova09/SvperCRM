@@ -1,24 +1,27 @@
 <?php
 
+use SvperCRM\Repositories\ContractRepositoryInterface;
+use SvperCRM\Repositories\PersonRepositoryInterface;
+
 class ContractsController extends \BaseController {
 
-    protected $retainer;
+    /**
+     * @var ContractRepositoryInterface
+     */
+    protected $contract;
+    protected $person;
 
-    public function __construct(Contract $contract)
+    public function __construct(
+        ContractRepositoryInterface $contract,
+        PersonRepositoryInterface $person)
     {
         $this->contract = $contract;
-        $this->person = new Person;
+        $this->person = $person;
     }
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /contracts
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-        $contracts = $this->contract->all();
+        $contracts = $this->contract->getAll();
 
         return View::make('contracts.index')->with('contracts', $contracts);
 	}
@@ -31,8 +34,8 @@ class ContractsController extends \BaseController {
 	 */
     public function create()
     {
-        $devs = $this->person->where('is_developer', '1')->get();
-        $designs = $this->person->where('is_designer', '1')->get();
+        $devs = $this->person->where('is_developer', '1');
+        $designs = $this->person->where('is_designer', '1');
 
         $developers[] = '';
         foreach($devs as $dev)
@@ -107,8 +110,8 @@ class ContractsController extends \BaseController {
     public function edit($id)
     {
         $contract = $this->contract->find($id);
-        $devs = $this->person->where('is_developer', '1')->get();
-        $designs = $this->person->where('is_designer', '1')->get();
+        $devs = $this->person->where('is_developer', '1');
+        $designs = $this->person->where('is_designer', '1');
 
         $developers[] = '';
         foreach($devs as $dev)
@@ -158,7 +161,8 @@ class ContractsController extends \BaseController {
             $this->contract->update($input);
 
             // redirect
-            return Redirect::route('contracts.show', [$id])->with('flash', 'Your Contract has been updated!');
+            return Redirect::route('contracts.show', [$id])
+                ->with('flash', 'Your Contract has been updated!');
         }
 	}
 
@@ -175,7 +179,8 @@ class ContractsController extends \BaseController {
 
         $contract->delete();
 
-        return Redirect::route('contracts.index')->with('flash', 'Your Contract has been removed!');
+        return Redirect::route('contracts.index')
+            ->with('flash', 'Your Contract has been removed!');
 	}
 
     /**
@@ -219,10 +224,12 @@ class ContractsController extends \BaseController {
             }
             fclose($upload);
 
-            return Redirect::route('contracts.index')->with('flash', 'Your file has been imported');
+            return Redirect::route('contracts.index')
+                ->with('flash', 'Your file has been imported');
         } else {
 
-            Redirect::route('import.contracts')->with('flash', 'There was no file in your submission');
+            Redirect::route('import.contracts')
+                ->with('flash', 'There was no file in your submission');
         }
 
     }
