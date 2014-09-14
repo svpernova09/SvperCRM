@@ -40,4 +40,8 @@ Route::group(array('before' => 'Sentinel\auth'), function()
     # Contracts Importer
     Route::post('import/contracts', 'ContractsController@import');
     Route::get('import/contracts', array('as' => 'import.contracts', 'uses' => 'ContractsController@upload'));
+
+    # Credentials Importer
+    Route::post('import/credentials', 'CredentialsController@import');
+    Route::get('import/credentials', array('as' => 'import.credentials', 'uses' => 'CredentialsController@upload'));
 });

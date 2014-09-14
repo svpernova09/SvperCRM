@@ -152,4 +152,49 @@ class CredentialsController extends \BaseController {
         return Redirect::route('organizations.show', [$organization_id])->with('flash', 'Your Credential has been removed!');
 	}
 
+    /**
+     * Show form to upload CSV
+     * @return mixed
+     */
+    public function upload()
+    {
+        return View::make('credentials.upload');
+    }
+
+    /**
+     * Process the uploaded CSV file
+     */
+    public function import()
+    {
+        if (Input::hasFile('csv')) {
+
+            $upload = fopen(Input::file('csv')->getRealPath(), 'r');
+            $rowCount = 0;
+
+            while (($row = fgetcsv($upload)) !== FALSE) {
+
+                if($rowCount != 0)
+                {
+                    $credential = new Credential;
+
+                    $credential->service_name = $row['0'];
+                    $credential->organization_id = $row['1'];
+                    $credential->user_name = $row['2'];
+                    $credential->password = $row['3'];
+                    $credential->comments = $row['4'];
+
+                    $credential->save();
+                }
+
+                $rowCount++;
+            }
+            fclose($upload);
+
+            return Redirect::route('organizations.show', $credential->organization_id)->with('flash', 'Your file has been imported');
+        } else {
+
+            Redirect::route('import.credentials')->with('flash', 'There was no file in your submission');
+        }
+
+    }
 }

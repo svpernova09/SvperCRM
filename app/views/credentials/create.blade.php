@@ -12,9 +12,9 @@ Create New Credential
     <div class="col-md-4 col-md-offset-4">
             <h2>Create New Credential</h2>
 
-            {{--<div class="form_group">--}}
-                {{--<button class="btn btn-primary" onClick="location.href='{{ URL::action('CredentialsController@upload') }}'">Import Credentials from file</button>--}}
-            {{--</div>--}}
+            <div class="form_group">
+                <button class="btn btn-primary" onClick="location.href='{{ URL::action('CredentialsController@upload') }}'">Import Credentials from file</button>
+            </div>
 
             <div class="form_group">
                 * denotes required fields.
