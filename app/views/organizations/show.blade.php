@@ -93,20 +93,22 @@ View Organization
 		</div>
 	</div>
 
-    @if (count($org->credentials) > 0)
-        <div class="well clearfix">
-            <h4>Credentials</h4>
+    
+    <div class="well clearfix">
+        <h4>Credentials</h4>
+        @if (count($org->credentials) > 0)
             <div class="col-md-8">
                 @foreach ($org->credentials as $cred)
                     <p><a href="{{ URL::route('organizations.credentials.show', [$org->id, $cred->id]) }}">{{ $cred->service_name }}</a></p>
                 @endforeach
             </div>
+        @endif
 
-            <div class="col-md-4">
-                <button class="btn btn-primary" onClick="location.href='{{ action('CredentialsController@create', [$org->id]) }}'">Create Credential</button>
-            </div>
+        <div class="col-md-4">
+            <button class="btn btn-primary" onClick="location.href='{{ action('CredentialsController@create', [$org->id]) }}'">Create Credential</button>
         </div>
-    @endif
+    </div>
+
 
 	
 	<hr />
