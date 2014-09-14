@@ -13,7 +13,7 @@
 		<!-- Bootstrap 3.0: Latest compiled and minified CSS -->
 		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
 		<link rel="stylesheet" href="{{ asset('packages/rydurham/sentinel/css/bootstrap.min.css') }}">
-
+        <link href="/bower_components/rome/dist/rome.min.css" rel="stylesheet" />
 		<!-- Optional theme -->
 		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css"> -->
 		<link rel="stylesheet" href="{{ asset('packages/rydurham/sentinel/css/bootstrap-theme.min.css') }}">
@@ -30,7 +30,6 @@
 		<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
 	
 	</head>
 
@@ -90,7 +89,9 @@
 		================================================== -->
 		<script src="{{ asset('packages/rydurham/sentinel/js/jquery-2.0.2.min.js') }}"></script>
 		<script src="{{ asset('packages/rydurham/sentinel/js/bootstrap.min.js') }}"></script>
-		<script src="{{ asset('packages/rydurham/sentinel/js/restfulizer.js') }}"></script> 
+		<script src="{{ asset('packages/rydurham/sentinel/js/restfulizer.js') }}"></script>
 		<!-- Thanks to Zizaco for the Restfulizer script.  http://zizaco.net  -->
+        <script src="/bower_components/moment/moment.js"></script>
+        <script src="/bower_components/rome/dist/rome.standalone.min.js"></script>
 	</body>
 </html>
