@@ -4,6 +4,8 @@ php:
 before_script:
    - "composer self-update"
    - "composer install"
-script: phpunit
-after_success:
-  - "curl --request GET 'https://forge.laravel.com/servers/2898/sites/17691/deploy/http?token=BBx3d6iHOoy33N2mUQlbrsWWH9Jb5uDUm5cBa4It'"
+script:
+  - mkdir -p build/logs
+  - phpunit --coverage-clover build/logs/clover.xml
+after_script:
+ - php vendor/bin/coveralls -v

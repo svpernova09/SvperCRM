@@ -14,7 +14,8 @@
         "way/generators": "~2.6.0",
         "barryvdh/laravel-ide-helper": "dev-master",
         "phpunit/phpunit": "4.2.*",
-        "mockery/mockery": "dev-master"
+        "mockery/mockery": "dev-master",
+        "satooshi/php-coveralls": "dev-master"
     },
 	"autoload": {
 		"classmap": [

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/svpernova09/SvperCRM.svg?branch=master)](https://travis-ci.org/svpernova09/SvperCRM)
+[![Coverage Status](https://img.shields.io/coveralls/svpernova09/SvperCRM.svg)](https://coveralls.io/r/svpernova09/SvperCRM)
 
 ## SvperCRM
 
