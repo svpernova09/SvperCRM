@@ -18,11 +18,13 @@ class DbOrganizationRepository implements OrganizationRepositoryInterface {
 
     public function create($input)
     {
+
         return Organization::create($input);
     }
 
     public function where($field, $value)
     {
+
         return Organization::where($field, $value)->get();
     }
 
