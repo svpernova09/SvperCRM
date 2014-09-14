@@ -113,9 +113,9 @@ View Organization
 	
 	<hr />
 
-	<h4>Ogranization Object</h4>
-	<div>
-		<p>{{ var_dump($org) }}</p>
-	</div>
+	{{--<h4>Ogranization Object</h4>--}}
+	{{--<div>--}}
+		{{--<p>{{ var_dump($org) }}</p>--}}
+	{{--</div>--}}
 
 @stop

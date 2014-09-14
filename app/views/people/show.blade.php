@@ -87,9 +87,9 @@ View Person
 	
 	<hr />
 
-	<h4>Person Object</h4>
-	<div>
-		<p>{{ var_dump($person) }}</p>
-	</div>
+	{{--<h4>Person Object</h4>--}}
+	{{--<div>--}}
+		{{--<p>{{ var_dump($person) }}</p>--}}
+	{{--</div>--}}
 
 @stop

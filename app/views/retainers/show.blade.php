@@ -58,9 +58,9 @@ View Retainer
 	
 	<hr />
 
-	<h4>Retainer Object</h4>
-	<div>
-		<p>{{ var_dump($retainer) }}</p>
-	</div>
+	{{--<h4>Retainer Object</h4>--}}
+	{{--<div>--}}
+		{{--<p>{{ var_dump($retainer) }}</p>--}}
+	{{--</div>--}}
 
 @stop

@@ -65,9 +65,9 @@ View Contract
 	
 	<hr />
 
-	<h4>Contract Object</h4>
-	<div>
-		<p>{{ var_dump($contract) }}</p>
-	</div>
+	{{--<h4>Contract Object</h4>--}}
+	{{--<div>--}}
+		{{--<p>{{ var_dump($contract) }}</p>--}}
+	{{--</div>--}}
 
 @stop

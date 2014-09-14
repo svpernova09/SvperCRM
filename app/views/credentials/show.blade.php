@@ -50,9 +50,9 @@ View Organization
 	
 	<hr />
 
-	<h4>Credential Object</h4>
-	<div>
-		<p>{{ var_dump($credential) }}</p>
-	</div>
+	{{--<h4>Credential Object</h4>--}}
+	{{--<div>--}}
+		{{--<p>{{ var_dump($credential) }}</p>--}}
+	{{--</div>--}}
 
 @stop
