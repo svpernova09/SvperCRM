@@ -10,7 +10,8 @@ class PeopleTableSeeder extends Seeder {
 		$faker = Faker::create();
 
         Person::create([
-            'name' => 'Joe Ferguson',
+            'first_name' => 'Joe',
+            'last_name' => 'Ferguson',
             'organization_id' => '1',
             'address' => '88 Union Ave',
             'address2' => '7th Floor',
@@ -25,7 +26,8 @@ class PeopleTableSeeder extends Seeder {
 		foreach(range(1, 10) as $index)
 		{
 			Person::create([
-                'name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'organization_id' => '2',
                 'address' => $faker->streetAddress,
                 'address2' => $faker->secondaryAddress,
