@@ -9,3 +9,4 @@ composer.lock
 Thumbs.db
 _ide_helper.php
 public/bower_components
+.vagrant
