@@ -15,7 +15,7 @@ Import Organizations
         {{ Form::open(array('action' => 'OrganizationsController@import', 'files' => 'true')) }}
 
             <div class="form-group {{ ($errors->has('csv')) ? 'has-error' : '' }}">
-                {{ Form::label('csv', 'Import People') }}
+                {{ Form::label('csv', 'Import Organizations') }}
                 {{ Form::file('csv') }}
             </div>
 
