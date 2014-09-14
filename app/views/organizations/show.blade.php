@@ -8,77 +8,77 @@ View Organization
 
 {{-- Content --}}
 @section('content')
-	<h4>{{ $org->name }}</h4>
+	<h4>{{ $organization->name }}</h4>
 	
   	<div class="well clearfix">
 	    <div class="col-md-8">
-		    @if ($org->address)
+		    @if ($organization->address)
 		    	<p>
 		    	    <strong>Address:</strong><br />
-                    @if ($org->address)
-                        {{ $org->address }} <br />
+                    @if ($organization->address)
+                        {{ $organization->address }} <br />
                     @endif
-                    @if ($org->address2)
-                        {{ $org->address2 }} <br />
+                    @if ($organization->address2)
+                        {{ $organization->address2 }} <br />
                     @endif
-                    @if ($org->city)
-                        {{ $org->city }}
+                    @if ($organization->city)
+                        {{ $organization->city }}
                     @endif
-                    @if ($org->state)
-                        {{ $org->state }}
+                    @if ($organization->state)
+                        {{ $organization->state }}
                     @endif
-                    @if ($org->zip)
-                        {{ $org->zip }}
+                    @if ($organization->zip)
+                        {{ $organization->zip }}
                     @endif
 		    	 </p>
 			@endif
-			@if ($org->phone)
-		    	<p><strong>Phone:</strong>  {{ $org->phone }}</p>
+			@if ($organization->phone)
+		    	<p><strong>Phone:</strong>  {{ $organization->phone }}</p>
 			@endif
-            @if ($org->is_agency)
+            @if ($organization->is_agency)
                 <p><strong>This is an agency.</strong></p>
             @endif
-		    @if ($org->agency)
+		    @if ($organization->agency)
 		        <p>
                     <strong>Related Agency:</strong><br>
-		            {{ $org->agency->name }}<br>
-                    @if ($org->agency->address)
-                        {{ $org->agency->address }} <br />
+		            {{ $organization->agency->name }}<br>
+                    @if ($organization->agency->address)
+                        {{ $organization->agency->address }} <br />
                     @endif
-                    @if ($org->agency->address2)
-                        {{ $org->agency->address2 }} <br />
+                    @if ($organization->agency->address2)
+                        {{ $organization->agency->address2 }} <br />
                     @endif
-                    @if ($org->agency->city)
-                        {{ $org->agency->city }}
+                    @if ($organization->agency->city)
+                        {{ $organization->agency->city }}
                     @endif
-                    @if ($org->agency->state)
-                        {{ $org->agency->state }}
+                    @if ($organization->agency->state)
+                        {{ $organization->agency->state }}
                     @endif
-                    @if ($org->agency->zip)
-                        {{ $org->agency->zip }}
+                    @if ($organization->agency->zip)
+                        {{ $organization->agency->zip }}
                     @endif
 		        </p>
 		    @endif
-            @if ($org->salesPerson)
+            @if ($organization->salesPerson)
                 <p><strong>Sales Person:</strong></p>
-                <p>{{ $org->salesPerson->name }}</p>
+                <p>{{ $organization->salesPerson->name }}</p>
             @endif
-            @if ($org->accountManager)
+            @if ($organization->accountManager)
                 <p><strong>Account Manager:</strong></p>
-                <p>{{ $org->accountManager->name }}</p>
+                <p>{{ $organization->accountManager->name }}</p>
             @endif
-            @if ($org->comments)
+            @if ($organization->comments)
                 <p><strong>Comments:</strong></p>
-                <p>{{ $org->comments }}</p>
+                <p>{{ $organization->comments }}</p>
             @endif
 		</div>
 		<div class="col-md-4">
-			<p><em>Created: {{ $org->created_at }}</em></p>
-			<p><em>Last Updated: {{ $org->updated_at }}</em></p>
-			<button class="btn btn-primary" onClick="location.href='{{ action('OrganizationsController@edit', array($org->id)) }}'">Edit Organization</button>
+			<p><em>Created: {{ $organization->created_at }}</em></p>
+			<p><em>Last Updated: {{ $organization->updated_at }}</em></p>
+			<button class="btn btn-primary" onClick="location.href='{{ action('OrganizationsController@edit', array($organization->id)) }}'">Edit Organization</button>
 
             <div class="btn-group">
-            {{ Form::open(array('route' => array('organizations.destroy', $org->id), 'method' => 'delete')) }}
+            {{ Form::open(array('route' => array('organizations.destroy', $organization->id), 'method' => 'delete')) }}
             <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
                 Danger <span class="caret"></span>
             </button>
@@ -96,16 +96,16 @@ View Organization
     
     <div class="well clearfix">
         <h4>Credentials</h4>
-        @if (count($org->credentials) > 0)
+        @if (count($organization->credentials) > 0)
             <div class="col-md-8">
-                @foreach ($org->credentials as $cred)
-                    <p><a href="{{ URL::route('organizations.credentials.show', [$org->id, $cred->id]) }}">{{ $cred->service_name }}</a></p>
+                @foreach ($organization->credentials as $cred)
+                    <p><a href="{{ URL::route('organizations.credentials.show', [$organization->id, $cred->id]) }}">{{ $cred->service_name }}</a></p>
                 @endforeach
             </div>
         @endif
 
         <div class="col-md-4">
-            <button class="btn btn-primary" onClick="location.href='{{ action('CredentialsController@create', [$org->id]) }}'">Create Credential</button>
+            <button class="btn btn-primary" onClick="location.href='{{ action('CredentialsController@create', [$organization->id]) }}'">Create Credential</button>
         </div>
     </div>
 
@@ -115,7 +115,7 @@ View Organization
 
 	{{--<h4>Ogranization Object</h4>--}}
 	{{--<div>--}}
-		{{--<p>{{ var_dump($org) }}</p>--}}
+		{{--<p>{{ var_dump($organization) }}</p>--}}
 	{{--</div>--}}
 
 @stop

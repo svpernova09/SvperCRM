@@ -102,9 +102,9 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        $org = $this->org->find($id);
+        $organization = $this->org->find($id);
 
-        return View::make('organizations.show')->with('org', $org);
+        return View::make('organizations.show')->with('organization', $organization);
 	}
 
 	/**

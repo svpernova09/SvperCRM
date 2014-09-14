@@ -11,19 +11,24 @@ class OrganizationsControllerTest extends TestCase {
     {
         parent::setUp();
 
-        $this->mock = Mockery::mock('Organization');
+        $this->mock = Mockery::mock(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface'
+        );
     }
 
     public function testIndex()
     {
         $this->mock
-            ->shouldReceive('all')
+            ->shouldReceive('getAll')
             ->once()
-            ->andReturn('foo');
+            ->andReturn(array());
 
-        $this->app->instance('Organization', $this->mock);
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
 
-        $this->call('GET', '/organizations');
+        $this->call('GET', 'organizations');
 
         $this->assertViewHas('organizations');
 
@@ -31,6 +36,15 @@ class OrganizationsControllerTest extends TestCase {
 
 //    public function testCreate()
 //    {
+//        $this->mock
+//            ->shouldReceive('create')
+//            ->once();
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+//            $this->mock
+//        );
+//
 //        $this->call('GET', '/organizations/create');
 //
 //        $this->assertResponseOk();
@@ -53,7 +67,10 @@ class OrganizationsControllerTest extends TestCase {
             ->shouldReceive('create')
             ->once();
 
-        $this->app->instance('Organization', $this->mock);
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
 
         $this->call('POST', 'organizations', $input);
 
@@ -66,7 +83,14 @@ class OrganizationsControllerTest extends TestCase {
         // Set stage for a failed validation
         $input = ['name' => ''];
 
-        $this->app->instance('Organization', $this->mock);
+        $this->mock
+            ->shouldReceive('create')
+            ->never();
+
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
 
         $this->call('POST', 'organizations', $input);
         // Failed validation should reload the create form
@@ -80,12 +104,16 @@ class OrganizationsControllerTest extends TestCase {
     {
         $this->mock
             ->shouldReceive('find')
-            ->once();
+            ->once()
+            ->andReturn(array());
 
-        $this->app->instance('Organization', $this->mock);
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
 
         $this->call('GET', 'organizations/1');
-        $this->assertViewHas('org');
+        $this->assertViewHas('organization');
     }
 
 //    public function testEdit()
