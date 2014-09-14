@@ -1,14 +1,19 @@
 <?php
 
+use SvperCRM\Repositories\RetainerRepositoryInterface;
+use SvperCRM\Repositories\PersonRepositoryInterface;
+
 class RetainersController extends \BaseController {
 
     protected $retainer;
+    protected $person;
 
-    public function __construct(Retainer $retainer)
+    public function __construct(
+        RetainerRepositoryInterface $retainer,
+        PersonRepositoryInterface $person)
     {
         $this->retainer = $retainer;
-        $this->person = new Person;
-//        $this->org = new Organization;
+        $this->person = $person;
     }
 
 	/**
@@ -19,7 +24,7 @@ class RetainersController extends \BaseController {
 	 */
     public function index()
     {
-        $retainers = $this->retainer->all();
+        $retainers = $this->retainer->getAll();
 
         return View::make('retainers.index')->with('retainers', $retainers);
     }
@@ -32,8 +37,8 @@ class RetainersController extends \BaseController {
 	 */
     public function create()
     {
-        $accounts = $this->person->where('is_account_manager', '1')->get();
-        $strats = $this->person->where('is_marketing_strategiest', '1')->get();
+        $accounts = $this->person->where('is_account_manager', '1');
+        $strats = $this->person->where('is_marketing_strategiest', '1');
 
         $accountManagers[] = '';
         foreach($accounts as $account)
@@ -108,8 +113,8 @@ class RetainersController extends \BaseController {
 	public function edit($id)
 	{
         $retainer = $this->retainer->find($id);
-        $accounts = $this->person->where('is_account_manager', '1')->get();
-        $strats = $this->person->where('is_marketing_strategiest', '1')->get();
+        $accounts = $this->person->where('is_account_manager', '1');
+        $strats = $this->person->where('is_marketing_strategiest', '1');
 
         $accountManagers[] = '';
         foreach($accounts as $account)
