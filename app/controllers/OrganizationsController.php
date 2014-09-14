@@ -1,18 +1,26 @@
 <?php
 
+use SvperCRM\Repositories\OrganizationRepositoryInterface;
+
 class OrganizationsController extends \BaseController {
 
+    /**
+     * @var OrganizationRepositoryInterface
+     */
     protected $org;
+    protected $person;
 
-    public function __construct(Organization $org)
+    public function __construct(
+        OrganizationRepositoryInterface $org,
+        Person $person)
     {
         $this->org = $org;
-        $this->person = new Person;
+        $this->person = $person;
     }
 
 	public function index()
 	{
-        $organizations = $this->org->all();
+        $organizations = $this->org->getAll();
 
         return View::make('organizations.index')->with('organizations', $organizations);
 	}
@@ -25,7 +33,7 @@ class OrganizationsController extends \BaseController {
 	 */
 	public function create()
 	{
-        $agencies = $this->org->where('is_agency', '1')->get();
+        $agencies = $this->org->where('is_agency', '1');
         $sales = $this->person->where('is_sales_person', '1')->get();
         $accounts = $this->person->where('is_account_manager', '1')->get();
 
@@ -109,7 +117,7 @@ class OrganizationsController extends \BaseController {
 	public function edit($id)
 	{
         $org = $this->org->find($id);
-        $agencies = $this->org->where('is_agency', '1')->get();
+        $agencies = $this->org->where('is_agency', '1');
         $sales = $this->person->where('is_sales_person', '1')->get();
         $accounts = $this->person->where('is_account_manager', '1')->get();
 
