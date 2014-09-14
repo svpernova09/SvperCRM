@@ -178,4 +178,52 @@ class ContractsController extends \BaseController {
         return Redirect::route('contracts.index')->with('flash', 'Your Contract has been removed!');
 	}
 
+    /**
+     * Show form to upload CSV
+     * @return mixed
+     */
+    public function upload()
+    {
+        return View::make('contracts.upload');
+    }
+
+    /**
+     * Process the uploaded CSV file
+     */
+    public function import()
+    {
+        if (Input::hasFile('csv')) {
+
+            $upload = fopen(Input::file('csv')->getRealPath(), 'r');
+            $rowCount = 0;
+
+            while (($row = fgetcsv($upload)) !== FALSE) {
+
+                if($rowCount != 0)
+                {
+                    $contract = new Contract;
+
+                    $contract->title = $row['0'];
+                    $contract->hours = $row['1'];
+                    $contract->start_date = $row['2'];
+                    $contract->end_date = $row['3'];
+                    $contract->designer_id = $row['4'];
+                    $contract->developer_id = $row['5'];
+                    $contract->platform = $row['6'];
+                    $contract->domain = $row['7'];
+
+                    $contract->save();
+                }
+
+                $rowCount++;
+            }
+            fclose($upload);
+
+            return Redirect::route('contracts.index')->with('flash', 'Your file has been imported');
+        } else {
+
+            Redirect::route('import.contracts')->with('flash', 'There was no file in your submission');
+        }
+
+    }
 }

@@ -12,9 +12,9 @@ Create New Contract
     <div class="col-md-4 col-md-offset-4">
             <h2>Create New Contract</h2>
 
-            {{--<div class="form_group">--}}
-                {{--<button class="btn btn-primary" onClick="location.href='{{ URL::action('ContractsController@upload') }}'">Import Contracts from file</button>--}}
-            {{--</div>--}}
+            <div class="form_group">
+                <button class="btn btn-primary" onClick="location.href='{{ URL::action('ContractsController@upload') }}'">Import Contracts from file</button>
+            </div>
 
             <div class="form_group">
                 * denotes required fields.

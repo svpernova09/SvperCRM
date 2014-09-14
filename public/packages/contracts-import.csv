@@ -1,0 +1,6 @@
+title,hours,start_date,end_date,designer_id,developer_id,platform,domain
+"Some Contract","1","0000-00-00 00:00:00","0000-00-00 00:00:00","","","platform info","domain.com"
+"Contract 2","15","0000-00-00 00:00:00","0000-00-00 00:00:00","","","platform info","domain.com"
+"Awesome Contract","5","0000-00-00 00:00:00","0000-00-00 00:00:00","","","platform info","domain.com"
+"Contract 3","3","0000-00-00 00:00:00","0000-00-00 00:00:00","","","platform info","domain.com"
+"Contract 4","1","0000-00-00 00:00:00","0000-00-00 00:00:00","","","platform info","domain.com"

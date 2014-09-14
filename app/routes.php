@@ -36,4 +36,8 @@ Route::group(array('before' => 'Sentinel\auth'), function()
     # Retainers Importer
     Route::post('import/retainers', 'RetainersController@import');
     Route::get('import/retainers', array('as' => 'import.retainers', 'uses' => 'RetainersController@upload'));
+
+    # Contracts Importer
+    Route::post('import/contracts', 'ContractsController@import');
+    Route::get('import/contracts', array('as' => 'import.contracts', 'uses' => 'ContractsController@upload'));
 });
