@@ -20,11 +20,11 @@ View Contract
             @endif
             @if ($contract->start_date)
                 <p><strong>Start Date:</strong></p>
-                <p>{{ $contract->start_date }}</p>
+                <p class="datetime-display">{{ $contract->start_date }}</p>
             @endif
             @if ($contract->end_date)
                 <p><strong>End Date:</strong></p>
-                <p>{{ $contract->end_date }}</p>
+                <p class="datetime-display">{{ $contract->end_date }}</p>
             @endif
             @if ($contract->platform)
                 <p><strong>Platform:</strong></p>

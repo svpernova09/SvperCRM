@@ -28,12 +28,14 @@ Edit Contract
             </div>
 
             <div class="form-group {{ ($errors->has('start_date')) ? 'has-error' : '' }}">
-                {{ Form::text('start_date', $contract->start_date, array('class' => 'form-control datetime-input-crm', 'placeholder' => 'Start Date (0000-00-00 00:00:00)')) }}
+                {{ Form::text('input_start_date', $contract->start_date, array('class' => 'form-control datetime-input-crm', 'placeholder' => 'Start Date (0000-00-00 00:00:00)')) }}
+                {{ Form::hidden('start_date') }}
                 {{ ($errors->has('start_date') ? $errors->first('start_date') : '') }}
             </div>
 
             <div class="form-group {{ ($errors->has('end_date')) ? 'has-error' : '' }}">
-                {{ Form::text('end_date', $contract->end_date, array('class' => 'form-control datetime-input-crm', 'placeholder' => 'End Date (0000-00-00 00:00:00)')) }}
+                {{ Form::text('input_end_date', $contract->end_date, array('class' => 'form-control datetime-input-crm', 'placeholder' => 'End Date (0000-00-00 00:00:00)')) }}
+                {{ Form::hidden('end_date') }}
                 {{ ($errors->has('end_date') ? $errors->first('end_date') : '') }}
             </div>
 
