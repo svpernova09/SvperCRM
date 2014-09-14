@@ -32,13 +32,13 @@ Create New Contract
             </div>
 
             <div class="form-group {{ ($errors->has('start_date')) ? 'has-error' : '' }}">
-                {{ Form::label('start_date', 'Start Date: (0000-00-00 00:00:00)') }}
-                {{ Form::text('start_date') }}
+                {{ Form::text('input_start_date', null, ['class' => 'form-control datetime-input-crm', 'placeholder' => 'Start Date']) }}
+                {{ Form::hidden('start_date') }}
             </div>
 
             <div class="form-group {{ ($errors->has('end_date')) ? 'has-error' : '' }}">
-                {{ Form::label('end_date', 'End Date: (0000-00-00 00:00:00)') }}
-                {{ Form::text('end_date') }}
+                {{ Form::text('input_end_date', null, ['class' => 'form-control datetime-input-crm', 'placeholder' => 'End Date']) }}
+                {{ Form::hidden('end_date') }}
             </div>
 
             <div class="form-group {{ ($errors->has('platform')) ? 'has-error' : '' }}">
