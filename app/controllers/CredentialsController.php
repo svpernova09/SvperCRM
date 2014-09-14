@@ -1,11 +1,16 @@
 <?php
 
+use SvperCRM\Repositories\CredentialRepositoryInterface;
+use SvperCRM\Repositories\OrganizationRepositoryInterface;
+
 class CredentialsController extends \BaseController {
 
     protected $credential;
     protected $org;
 
-    public function __construct(Credential $credential, Organization $org)
+    public function __construct(
+        CredentialRepositoryInterface $credential,
+        OrganizationRepositoryInterface $org)
     {
         $this->credential = $credential;
         $this->org = $org;
@@ -19,7 +24,7 @@ class CredentialsController extends \BaseController {
 	 */
 	public function index($organization_id)
 	{
-        $credentials = $this->credential->where('organization_id', $organization_id)->get();
+        $credentials = $this->credential->where('organization_id', $organization_id);
 
         return View::make('credentials.index')->with('credentials', $credentials);
 	}
