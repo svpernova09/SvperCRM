@@ -134,15 +134,39 @@ class OrganizationsControllerTest extends TestCase {
         $this->assertViewHas('organization');
     }
 
-//    public function testEdit()
-//    {
-//        $this->mock
-//            ->shouldReceive('find')
-//            ->once();
-//
-//        $this->app->instance('Organization', $this->mock);
-//
-//        $this->call('GET', 'organizations/1/edit');
-//        $this->assertViewHas('org');
-//    }
+    public function testEdit()
+    {
+        $this->mock
+            ->shouldReceive('find')
+            ->once()
+            ->andReturn(array());
+
+        $this->mock
+            ->shouldReceive('where')
+            ->once()
+            ->andReturn(array());
+
+        $this->mock->person
+            ->shouldReceive('where')
+            ->twice()
+            ->andReturn(array());
+
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
+
+        $this->app->instance(
+            'SvperCRM\Repositories\PersonRepositoryInterface',
+            $this->mock->person
+        );
+
+        $this->call('GET', 'organizations/1/edit');
+
+        $this->assertResponseOk();
+        $this->assertViewHas('org');
+        $this->assertViewHas('possibleAgencies');
+        $this->assertViewHas('salesPeople');
+        $this->assertViewHas('accountManagers');
+    }
 }

@@ -119,8 +119,8 @@ class OrganizationsController extends \BaseController {
 	{
         $org = $this->org->find($id);
         $agencies = $this->org->where('is_agency', '1');
-        $sales = $this->person->where('is_sales_person', '1')->get();
-        $accounts = $this->person->where('is_account_manager', '1')->get();
+        $sales = $this->person->where('is_sales_person', '1');
+        $accounts = $this->person->where('is_account_manager', '1');
 
         $salesPeople[] = '';
         foreach($sales as $sale)
