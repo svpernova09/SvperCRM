@@ -3,10 +3,12 @@
 class CredentialsController extends \BaseController {
 
     protected $credential;
+    protected $org;
 
-    public function __construct(Credential $credential)
+    public function __construct(Credential $credential, Organization $org)
     {
         $this->credential = $credential;
+        $this->org = $org;
     }
 
 	/**
@@ -74,11 +76,14 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($organization_id, $id)
 	{
+        $org = $this->org->find($organization_id);
         $credential = $this->credential->find($id);
 
-        return View::make('credentials.show')->with('credential', $credential);
+        return View::make('credentials.show')
+            ->with('credential', $credential)
+            ->with('org', $org);
 	}
 
 	/**
@@ -88,11 +93,14 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($organization_id, $id)
 	{
+        $org = $this->org->find($organization_id);
         $credential = $this->credential->find($id);
 
-        return View::make('credentials.edit')->with('credential', $credential);
+        return View::make('credentials.edit')
+            ->with('credential', $credential)
+            ->with('org', $org);
 	}
 
 	/**
@@ -124,7 +132,7 @@ class CredentialsController extends \BaseController {
             $this->credential->update($input);
 
             // redirect
-            return Redirect::route('credentials.show', [$id])->with('flash', 'Your Credential has been updated!');
+            return Redirect::route('organizations.credentials.show', [$organization_id, $id])->with('flash', 'Your Credential has been updated!');
         }
 	}
 
@@ -135,13 +143,13 @@ class CredentialsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($organization_id, $id)
 	{
         $this->credential = Credential::find($id);
 
         $this->credential->delete();
 
-        return Redirect::route('credentials.index')->with('flash', 'Your Credential has been removed!');
+        return Redirect::route('organizations.show', [$organization_id])->with('flash', 'Your Credential has been removed!');
 	}
 
 }
