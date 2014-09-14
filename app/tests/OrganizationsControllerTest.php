@@ -14,6 +14,10 @@ class OrganizationsControllerTest extends TestCase {
         $this->mock = Mockery::mock(
             'SvperCRM\Repositories\OrganizationRepositoryInterface'
         );
+
+        $this->mock->person = Mockery::mock(
+            'SvperCRM\Repositories\PersonRepositoryInterface'
+        );
     }
 
     public function testIndex()
@@ -34,21 +38,35 @@ class OrganizationsControllerTest extends TestCase {
 
     }
 
-//    public function testCreate()
-//    {
-//        $this->mock
-//            ->shouldReceive('create')
-//            ->once();
-//
-//        $this->app->instance(
-//            'SvperCRM\Repositories\OrganizationRepositoryInterface',
-//            $this->mock
-//        );
-//
-//        $this->call('GET', '/organizations/create');
-//
-//        $this->assertResponseOk();
-//    }
+    public function testCreate()
+    {
+        $this->mock
+            ->shouldReceive('where')
+            ->once()
+            ->andReturn(array());
+
+        $this->mock->person
+            ->shouldReceive('where')
+            ->twice()
+            ->andReturn(array());
+
+        $this->app->instance(
+            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+            $this->mock
+        );
+
+        $this->app->instance(
+            'SvperCRM\Repositories\PersonRepositoryInterface',
+            $this->mock->person
+        );
+
+        $this->call('GET', '/organizations/create');
+
+        $this->assertResponseOk();
+        $this->assertViewHas('possibleAgencies');
+        $this->assertViewHas('salesPeople');
+        $this->assertViewHas('accountManagers');
+    }
 
     public function testStoreSuccess()
     {
