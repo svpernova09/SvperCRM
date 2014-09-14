@@ -178,4 +178,50 @@ class RetainersController extends \BaseController {
         return Redirect::route('retainers.index')->with('flash', 'Your Retainer has been removed!');
 	}
 
+    /**
+     * Show form to upload CSV
+     * @return mixed
+     */
+    public function upload()
+    {
+        return View::make('retainers.upload');
+    }
+
+    /**
+     * Process the uploaded CSV file
+     */
+    public function import()
+    {
+        if (Input::hasFile('csv')) {
+
+            $upload = fopen(Input::file('csv')->getRealPath(), 'r');
+            $rowCount = 0;
+
+            while (($row = fgetcsv($upload)) !== FALSE) {
+
+                if($rowCount != 0)
+                {
+                    $retainer = new Retainer;
+
+                    $retainer->title = $row['0'];
+                    $retainer->hours = $row['1'];
+                    $retainer->strategiest_id = $row['2'];
+                    $retainer->account_manager_id = $row['3'];
+                    $retainer->domain = $row['4'];
+                    $retainer->comments = $row['5'];
+
+                    $retainer->save();
+                }
+
+                $rowCount++;
+            }
+            fclose($upload);
+
+            return Redirect::route('retainers.index')->with('flash', 'Your file has been imported');
+        } else {
+
+            Redirect::route('import.retainers')->with('flash', 'There was no file in your submission');
+        }
+
+    }
 }
