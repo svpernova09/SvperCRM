@@ -2,7 +2,8 @@
 
 class Person extends \Eloquent {
 	protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'organization_id',
         'address',
         'address2',

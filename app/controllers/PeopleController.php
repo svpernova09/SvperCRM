@@ -51,7 +51,8 @@ class PeopleController extends \BaseController {
         $input = Input::all();
 
         $rules = [
-            'name' => 'required'
+            'first_name' => 'required',
+            'last_name' => 'required'
         ];
 
         $validator = Validator::make($input, $rules);
@@ -121,7 +122,8 @@ class PeopleController extends \BaseController {
         $input = Input::all();
 
         $rules = [
-            'name' => 'required'
+            'first_name' => 'required',
+            'last_name' => 'required'
         ];
 
         $validator = Validator::make($input, $rules);
@@ -183,22 +185,23 @@ class PeopleController extends \BaseController {
                 {
                     $person = new Person;
 
-                    $person->name = $row['0'];
-                    $person->organization_id = $row['1'];
-                    $person->address = $row['2'];
-                    $person->address2 = $row['3'];
-                    $person->city = $row['4'];
-                    $person->state = $row['5'];
-                    $person->zip = $row['6'];
-                    $person->office_phone = $row['7'];
-                    $person->mobile_phone = $row['8'];
-                    $person->email = $row['9'];
-                    $person->comments = $row['10'];
-                    $person->is_sales_person = $row['11'];
-                    $person->is_account_manager = $row['12'];
-                    $person->is_designer = $row['13'];
-                    $person->is_developer = $row['14'];
-                    $person->is_marketing_strategiest = $row['15'];
+                    $person->first_name = $row['0'];
+                    $person->last_name = $row['1'];
+                    $person->organization_id = $row['2'];
+                    $person->address = $row['3'];
+                    $person->address2 = $row['4'];
+                    $person->city = $row['5'];
+                    $person->state = $row['6'];
+                    $person->zip = $row['7'];
+                    $person->office_phone = $row['8'];
+                    $person->mobile_phone = $row['9'];
+                    $person->email = $row['10'];
+                    $person->comments = $row['11'];
+                    $person->is_sales_person = $row['12'];
+                    $person->is_account_manager = $row['13'];
+                    $person->is_designer = $row['14'];
+                    $person->is_developer = $row['15'];
+                    $person->is_marketing_strategiest = $row['16'];
 
                     $person->save();
                 }

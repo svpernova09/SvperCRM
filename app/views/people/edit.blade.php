@@ -17,9 +17,14 @@ Edit Person
                 * denotes required fields.
             </div>
 
-            <div class="form-group {{ ($errors->has('name')) ? 'has-error' : '' }}">
-                {{ Form::text('name', $person->name, array('class' => 'form-control', 'placeholder' => 'Name *')) }}
-                {{ ($errors->has('name') ? $errors->first('name') : '') }}
+            <div class="form-group {{ ($errors->has('first_name')) ? 'has-error' : '' }}">
+                {{ Form::text('first_name', $person->first_name, array('class' => 'form-control', 'placeholder' => 'First Name *')) }}
+                {{ ($errors->has('first_name') ? $errors->first('first_name') : '') }}
+            </div>
+
+            <div class="form-group {{ ($errors->has('last_name')) ? 'has-error' : '' }}">
+                {{ Form::text('last_name', $person->last_name, array('class' => 'form-control', 'placeholder' => 'Last Name *')) }}
+                {{ ($errors->has('last_name') ? $errors->first('last_name') : '') }}
             </div>
 
             <div class="form-group {{ ($errors->has('address')) ? 'has-error' : '' }}">
