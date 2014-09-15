@@ -5,6 +5,7 @@ class OrganizationsControllerTest extends TestCase {
     public function tearDown()
     {
         Mockery::close();
+        Artisan::call('migrate:reset');
     }
 
     public function setUp()
@@ -12,7 +13,7 @@ class OrganizationsControllerTest extends TestCase {
         parent::setUp();
 
         Artisan::call('migrate');
-
+        Artisan::call('db:seed');
 //        $this->mock = Mockery::mock(
 //            'SvperCRM\Repositories\OrganizationRepositoryInterface'
 //        );
@@ -26,10 +27,15 @@ class OrganizationsControllerTest extends TestCase {
     public function testNameIsRequired()
     {
 
-        //Create new Organizaton
-        $org = new Organizataion;
+        //Create new Organization
+        $org = new Organization;
         $org->address = '88 Union';
         $org->city = 'Memphis';
+        $org->address2 = '7th Floor';
+        $org->state = 'TN';
+        $org->zip = '38103';
+        $org->phone = '(901) 522-0205';
+
         // Org should not save
         $this->assertFalse($org->save());
         // Save the errors
