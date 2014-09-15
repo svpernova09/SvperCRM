@@ -105,7 +105,8 @@ class OrganizationsController extends \BaseController {
 	{
         $organization = $this->org->find($id);
 
-        return View::make('organizations.show')->with('organization', $organization);
+        return View::make('organizations.show', ['organization' => $organization]);
+
 	}
 
 	/**

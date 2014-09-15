@@ -14,7 +14,7 @@ class AddOrganizationIdToCredentialsTable extends Migration {
     {
         Schema::table('credentials', function(Blueprint $table)
         {
-            $table->string('organization_id')->after('service_name');
+            $table->string('organization_id')->nullable()->after('service_name');
         });
     }
 

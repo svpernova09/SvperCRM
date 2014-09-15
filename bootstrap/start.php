@@ -29,7 +29,7 @@ $env = $app->detectEnvironment(function() use ($app)
     if ($app->runningInConsole()) {
         $folder = explode('/', $_SERVER['PWD']);
 
-        if (end($folder) == 'trophybox')
+        if (end($folder) == 'svpercrm')
         {
 
             return 'homestead';
