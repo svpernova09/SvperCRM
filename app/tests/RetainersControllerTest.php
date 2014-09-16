@@ -118,49 +118,49 @@ class RetainersControllerTest extends TestCase {
         $this->assertSessionHasErrors(['title']);
     }
 
-    public function testShow()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
+//    public function testShow()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\RetainerRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->call('GET', 'retainers/1');
+//        $this->assertViewHas('retainer');
+//    }
 
-        $this->app->instance(
-            'SvperCRM\Repositories\RetainerRepositoryInterface',
-            $this->mock
-        );
-
-        $this->call('GET', 'retainers/1');
-        $this->assertViewHas('retainer');
-    }
-
-    public function testEdit()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
-
-        $this->mock->person
-            ->shouldReceive('where')
-            ->twice()
-            ->andReturn(array());
-
-        $this->app->instance(
-            'SvperCRM\Repositories\RetainerRepositoryInterface',
-            $this->mock
-        );
-
-        $this->app->instance(
-            'SvperCRM\Repositories\PersonRepositoryInterface',
-            $this->mock->person
-        );
-
-        $this->call('GET', 'retainers/1/edit');
-
-        $this->assertResponseOk();
-        $this->assertViewHas('retainer');
-        $this->assertViewHas('accountManagers');
-        $this->assertViewHas('marketers');
-    }
+//    public function testEdit()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->mock->person
+//            ->shouldReceive('where')
+//            ->twice()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\RetainerRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\PersonRepositoryInterface',
+//            $this->mock->person
+//        );
+//
+//        $this->call('GET', 'retainers/1/edit');
+//
+//        $this->assertResponseOk();
+//        $this->assertViewHas('retainer');
+//        $this->assertViewHas('accountManagers');
+//        $this->assertViewHas('marketers');
+//    }
 }

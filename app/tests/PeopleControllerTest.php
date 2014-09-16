@@ -104,21 +104,21 @@ class PeopleControllerTest extends TestCase {
         $this->assertSessionHasErrors(['first_name']);
     }
 
-    public function testShow()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
-
-        $this->app->instance(
-            'SvperCRM\Repositories\PersonRepositoryInterface',
-            $this->mock
-        );
-
-        $this->call('GET', 'people/1');
-        $this->assertViewHas('person');
-    }
+//    public function testShow()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\PersonRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->call('GET', 'people/1');
+//        $this->assertViewHas('person');
+//    }
 
 //    public function testEdit()
 //    {

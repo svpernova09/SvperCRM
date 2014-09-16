@@ -118,55 +118,55 @@ class OrganizationsControllerTest extends TestCase {
         $this->assertSessionHasErrors(['name']);
     }
 
-    public function testShow()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
+//    public function testShow()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->call('GET', 'organizations/1');
+//        $this->assertViewHas('organization');
+//    }
 
-        $this->app->instance(
-            'SvperCRM\Repositories\OrganizationRepositoryInterface',
-            $this->mock
-        );
-
-        $this->call('GET', 'organizations/1');
-        $this->assertViewHas('organization');
-    }
-
-    public function testEdit()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
-
-        $this->mock
-            ->shouldReceive('where')
-            ->once()
-            ->andReturn(array());
-
-        $this->mock->person
-            ->shouldReceive('where')
-            ->twice()
-            ->andReturn(array());
-
-        $this->app->instance(
-            'SvperCRM\Repositories\OrganizationRepositoryInterface',
-            $this->mock
-        );
-
-        $this->app->instance(
-            'SvperCRM\Repositories\PersonRepositoryInterface',
-            $this->mock->person
-        );
-
-        $this->call('GET', 'organizations/1/edit');
-
-        $this->assertResponseOk();
-        $this->assertViewHas('org');
-        $this->assertViewHas('possibleAgencies');
-        $this->assertViewHas('salesPeople');
-        $this->assertViewHas('accountManagers');
-    }
+//    public function testEdit()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->mock
+//            ->shouldReceive('where')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->mock->person
+//            ->shouldReceive('where')
+//            ->twice()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\OrganizationRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\PersonRepositoryInterface',
+//            $this->mock->person
+//        );
+//
+//        $this->call('GET', 'organizations/1/edit');
+//
+//        $this->assertResponseOk();
+//        $this->assertViewHas('org');
+//        $this->assertViewHas('possibleAgencies');
+//        $this->assertViewHas('salesPeople');
+//        $this->assertViewHas('accountManagers');
+//    }
 }

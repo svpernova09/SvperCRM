@@ -118,49 +118,49 @@ class ContractsControllerTest extends TestCase {
         $this->assertSessionHasErrors(['title']);
     }
 
-    public function testShow()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
+//    public function testShow()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\ContractRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->call('GET', 'contracts/1');
+//        $this->assertViewHas('contract');
+//    }
 
-        $this->app->instance(
-            'SvperCRM\Repositories\ContractRepositoryInterface',
-            $this->mock
-        );
-
-        $this->call('GET', 'contracts/1');
-        $this->assertViewHas('contract');
-    }
-
-    public function testEdit()
-    {
-        $this->mock
-            ->shouldReceive('find')
-            ->once()
-            ->andReturn(array());
-
-        $this->mock->person
-            ->shouldReceive('where')
-            ->twice()
-            ->andReturn(array());
-
-        $this->app->instance(
-            'SvperCRM\Repositories\ContractRepositoryInterface',
-            $this->mock
-        );
-
-        $this->app->instance(
-            'SvperCRM\Repositories\PersonRepositoryInterface',
-            $this->mock->person
-        );
-
-        $this->call('GET', 'contracts/1/edit');
-
-        $this->assertResponseOk();
-        $this->assertViewHas('contract');
-        $this->assertViewHas('designers');
-        $this->assertViewHas('developers');
-    }
+//    public function testEdit()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
+//
+//        $this->mock->person
+//            ->shouldReceive('where')
+//            ->twice()
+//            ->andReturn(array());
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\ContractRepositoryInterface',
+//            $this->mock
+//        );
+//
+//        $this->app->instance(
+//            'SvperCRM\Repositories\PersonRepositoryInterface',
+//            $this->mock->person
+//        );
+//
+//        $this->call('GET', 'contracts/1/edit');
+//
+//        $this->assertResponseOk();
+//        $this->assertViewHas('contract');
+//        $this->assertViewHas('designers');
+//        $this->assertViewHas('developers');
+//    }
 }
