@@ -100,7 +100,7 @@ class CredentialsControllerTest extends TestCase {
 //        // Should redirect to collection, with a success flash message
 //        $this->assertRedirectedToRoute('credentials.index', null, ['flash']);
 //    }
-
+//
 //    public function testStoreFails()
 //    {
 //        // Set stage for a failed validation
@@ -111,16 +111,54 @@ class CredentialsControllerTest extends TestCase {
 //            ->never();
 //
 //        $this->app->instance(
+//            'SvperCRM\Repositories\PersonRepositoryInterface',
+//            $this->mock->person
+//        );
+//
+//        $this->call('GET', '/credentials/create');
+//
+//        $this->assertResponseOk();
+//        $this->assertViewHas('developers');
+//        $this->assertViewHas('designers');
+//    }
+
+//    public function testStoreSuccess()
+//    {
+//        // Set stage for successful validation
+//        $input = [
+//            'title' => 'RocketFuel',
+//            'hours' => '20',
+//            'start_date' => '1',
+//            'end_date' => '1',
+//            'designer_id' => '1',
+//            'developer_id' => '1',
+//            'platform' => 'Platform',
+//            'domain' => 'domain'
+//        ];
+//
+//        $this->mock
+//            ->shouldReceive('create')
+//            ->once();
+//
+//        $this->app->instance(
 //            'SvperCRM\Repositories\CredentialRepositoryInterface',
 //            $this->mock
 //        );
 //
+//    public function testShow()
+//    {
+//        $this->mock
+//            ->shouldReceive('find')
+//            ->once()
+//            ->andReturn(array());
 //        $this->call('POST', 'credentials', $input);
 //        // Failed validation should reload the create form
 //        $this->assertRedirectedToRoute('credentials.create');
 //
 //        // The errors should be sent to the view
 //        $this->assertSessionHasErrors(['title']);
+//        $this->call('GET', 'credentials/1');
+//        $this->assertViewHas('credential');
 //    }
 
 //    public function testShow()
