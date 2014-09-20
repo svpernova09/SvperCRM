@@ -6,3 +6,4 @@ service nginx restart
 echo "" >> /home/vagrant/.bashrc
 echo "PATH=$PATH:/home/vagrant/svpercrm/vendor/bin" >> /home/vagrant/.bashrc
 echo "export PATH" >> /home/vagrant/.bashrc
+mysql -u homestead -psecret -e "GRANT ALL PRIVILEGES ON homestead.* TO 'travis'@'%' IDENTIFIED BY ''"
