@@ -37,7 +37,7 @@ class CredentialsControllerTest extends TestCase {
         ];
         $credential = Factory::create('Credential', $credentials);
         $org = Factory::create('Organization', $credentials);
-        
+
         $this->action('GET', 'CredentialsController@edit', array(1,1));
 
         $this->assertResponseOk();
