@@ -4,6 +4,8 @@
 composer.phar
 composer.lock
 .env.*.php
+!.env.homestead.php
+!.env.testing.php
 .env.php
 .DS_Store
 Thumbs.db
