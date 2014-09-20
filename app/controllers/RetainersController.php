@@ -1,16 +1,13 @@
 <?php
 
-use SvperCRM\Repositories\RetainerRepositoryInterface;
-use SvperCRM\Repositories\PersonRepositoryInterface;
-
 class RetainersController extends \BaseController {
 
     protected $retainer;
     protected $person;
 
     public function __construct(
-        RetainerRepositoryInterface $retainer,
-        PersonRepositoryInterface $person)
+        Retainer $retainer,
+        Person $person)
     {
         $this->retainer = $retainer;
         $this->person = $person;
@@ -24,7 +21,7 @@ class RetainersController extends \BaseController {
 	 */
     public function index()
     {
-        $retainers = $this->retainer->getAll();
+        $retainers = $this->retainer->all();
 
         return View::make('retainers.index')->with('retainers', $retainers);
     }

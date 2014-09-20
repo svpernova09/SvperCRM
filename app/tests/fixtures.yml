@@ -32,3 +32,13 @@ Person:
   is_designer: $integer
   is_developer: $integer
   is_marketing_strategiest: $integer
+
+Retainer:
+  title: $string
+  hours: $string
+  strategiest_id:
+    type: Person
+  account_manager_id:
+    type: Person
+  domain: $string
+  comments: $text
