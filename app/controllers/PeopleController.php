@@ -1,12 +1,10 @@
 <?php
 
-use SvperCRM\Repositories\PersonRepositoryInterface;
-
 class PeopleController extends \BaseController {
 
     protected $person;
 
-    public function __construct(PersonRepositoryInterface $person)
+    public function __construct(Person $person)
     {
         $this->person = $person;
     }
@@ -18,7 +16,7 @@ class PeopleController extends \BaseController {
 	 */
 	public function index()
 	{
-        $people = $this->person->getAll();
+        $people = $this->person->all();
 
         return View::make('people.index')->with('people', $people);
 	}
