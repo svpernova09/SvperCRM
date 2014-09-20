@@ -42,3 +42,15 @@ Retainer:
     type: Person
   domain: $string
   comments: $text
+
+Contract:
+  title: $string
+  hours: $string
+  start_date: $date
+  end_date: $date
+  designer_id:
+    type: Person
+  developer_id:
+    type: Person
+  platform: $text
+  domain: $string

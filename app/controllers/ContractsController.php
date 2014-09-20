@@ -12,8 +12,8 @@ class ContractsController extends \BaseController {
     protected $person;
 
     public function __construct(
-        ContractRepositoryInterface $contract,
-        PersonRepositoryInterface $person)
+        Contract $contract,
+        Person $person)
     {
         $this->contract = $contract;
         $this->person = $person;
@@ -21,7 +21,7 @@ class ContractsController extends \BaseController {
 
 	public function index()
 	{
-        $contracts = $this->contract->getAll();
+        $contracts = $this->contract->all();
 
         return View::make('contracts.index')->with('contracts', $contracts);
 	}
