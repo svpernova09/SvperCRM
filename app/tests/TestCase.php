@@ -2,18 +2,68 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
-	/**
-	 * Creates the application.
-	 *
-	 * @return \Symfony\Component\HttpKernel\HttpKernelInterface
-	 */
-	public function createApplication()
-	{
-		$unitTesting = true;
+    use Watson\Testing\TestingTrait;
 
-		$testEnvironment = 'testing';
+    /**
+     * Creates the application.
+     *
+     * @return \Symfony\Component\HttpKernel\HttpKernelInterface
+     */
+    public function createApplication()
+    {
+        $unitTesting = true;
 
-		return require __DIR__.'/../../bootstrap/start.php';
-	}
+        $testEnvironment = 'testing';
+
+        return require __DIR__.'/../../bootstrap/start.php';
+    }
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->resetEvents();
+
+        Artisan::call('migrate');
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+
+        Artisan::call('migrate:reset');
+    }
+
+    /**
+     * Flush and reboot Eloquent model events.
+     *
+     * @return void
+     */
+    public function resetEvents()
+    {
+        foreach ($this->getModels() as $model)
+        {
+            call_user_func([$model, 'flushEventListeners']);
+
+            call_user_func([$model, 'boot']);
+        }
+    }
+
+    /**
+     * Get the model names from their filename.
+     *
+     * @return array
+     */
+    protected function getModels()
+    {
+        $files = File::files(base_path() . '/app/models');
+
+        foreach ($files as $file)
+        {
+            $models[] = pathinfo($file, PATHINFO_FILENAME);
+        }
+
+        return $models;
+    }
 
 }

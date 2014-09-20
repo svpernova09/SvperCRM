@@ -1,7 +1,7 @@
 <?php
 
-use SvperCRM\Repositories\OrganizationRepositoryInterface;
-use SvperCRM\Repositories\PersonRepositoryInterface;
+//use SvperCRM\Repositories\OrganizationRepositoryInterface;
+//use SvperCRM\Repositories\PersonRepositoryInterface;
 
 class OrganizationsController extends \BaseController {
 
@@ -12,16 +12,18 @@ class OrganizationsController extends \BaseController {
     protected $person;
 
     public function __construct(
-        OrganizationRepositoryInterface $org,
-        PersonRepositoryInterface $person)
+        Organization $org,
+        Person $person)
     {
+        parent::__construct();
+
         $this->org = $org;
         $this->person = $person;
     }
 
 	public function index()
 	{
-        $organizations = $this->org->getAll();
+        $organizations = $this->org->all();
 
         return View::make('organizations.index')->with('organizations', $organizations);
 	}
@@ -105,7 +107,8 @@ class OrganizationsController extends \BaseController {
 	{
         $organization = $this->org->find($id);
 
-        return View::make('organizations.show')->with('organization', $organization);
+        return View::make('organizations.show')
+            ->with('organization', $organization);
 	}
 
 	/**
