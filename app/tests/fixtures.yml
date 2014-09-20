@@ -54,3 +54,11 @@ Contract:
     type: Person
   platform: $text
   domain: $string
+
+Credential:
+  service_name: $string
+  organization_id:
+    type: Organization
+  user_name: $string
+  password: $string
+  comments: $text

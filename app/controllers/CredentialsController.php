@@ -1,16 +1,13 @@
 <?php
 
-use SvperCRM\Repositories\CredentialRepositoryInterface;
-use SvperCRM\Repositories\OrganizationRepositoryInterface;
-
 class CredentialsController extends \BaseController {
 
     protected $credential;
     protected $org;
 
     public function __construct(
-        CredentialRepositoryInterface $credential,
-        OrganizationRepositoryInterface $org)
+        Credential $credential,
+        Organization $org)
     {
         $this->credential = $credential;
         $this->org = $org;
