@@ -22,6 +22,7 @@ class CreateRetainersTable extends Migration {
 			$table->text('domain');
 			$table->text('comments');
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 		});
 	}
 

@@ -7,7 +7,11 @@
 		"laravel/framework": "4.2.*",
         "rydurham/sentinel": "1.*",
         "doctrine/dbal": "dev-master",
-        "guzzlehttp/guzzle": "4.*"
+        "guzzlehttp/guzzle": "4.*",
+        "watson/active": "1.2.*",
+        "watson/sitemap": "1.1.*",
+        "watson/taggly": "1.0.*",
+        "watson/validating": "dev-develop"
 	},
     "require-dev": {
         "fzaninotto/faker": "dev-master",

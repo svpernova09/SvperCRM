@@ -11,9 +11,7 @@ class OrganizationsController extends \BaseController {
     protected $org;
     protected $person;
 
-    public function __construct(
-        Organization $org,
-        Person $person)
+    public function __construct(Organization $org, Person $person)
     {
         parent::__construct();
 

@@ -32,6 +32,7 @@ class CreatePeopleTable extends Migration {
             $table->boolean('is_developer');
             $table->boolean('is_marketing_strategiest');
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 		});
 	}
 

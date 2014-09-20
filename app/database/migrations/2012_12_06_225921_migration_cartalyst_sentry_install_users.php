@@ -45,6 +45,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 
 			// We'll need to ensure that MySQL uses the InnoDB engine to
 			// support the indexes, other engines aren't affected.

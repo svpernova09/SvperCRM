@@ -28,6 +28,7 @@ class CreateOrganizationsTable extends Migration {
             $table->string('agency_id');
             $table->text('comments');
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 		});
 	}
 

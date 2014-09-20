@@ -20,6 +20,7 @@ class CreateCredentialsTable extends Migration {
 			$table->string('password');
 			$table->text('comments');
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 		});
 	}
 

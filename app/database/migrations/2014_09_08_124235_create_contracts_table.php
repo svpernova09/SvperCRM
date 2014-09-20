@@ -24,6 +24,7 @@ class CreateContractsTable extends Migration {
 			$table->text('platform');
 			$table->text('domain');
 			$table->timestamps();
+            $table->string('deleted_at')->nullable();
 		});
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-class Organization extends \Eloquent {
+class Organization extends BaseModel {
     protected $fillable = [
         'name',
         'address',
@@ -14,6 +14,10 @@ class Organization extends \Eloquent {
         'comments',
         'salesperson_id',
         'account_manager_id'
+    ];
+
+    protected $rules = [
+        'name'      => 'required'
     ];
 
     public function credentials()
