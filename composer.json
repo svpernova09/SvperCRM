@@ -22,7 +22,8 @@
         "phpunit/phpunit": "4.1.*",
         "watson/testing": "1.1.*",
         "satooshi/php-coveralls": "dev-master",
-        "laravel/envoy": "~1.0"
+        "laravel/envoy": "~1.0",
+	  	"barryvdh/laravel-debugbar": "1.x"
     },
 	"autoload": {
 		"classmap": [
